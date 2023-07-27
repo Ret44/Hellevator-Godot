@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://0kqkvlj6olim"]
+
+[ext_resource type="Script" path="res://Nodes/HotelFloor.gd" id="1_qclvp"]
+[ext_resource type="Texture2D" uid="uid://sgmx1eo6prpo" path="res://Sprites/Floors/corridor_0001.png" id="2_cx2rk"]
+
+[node name="Floor" type="Node2D"]
+script = ExtResource("1_qclvp")
+background_left_path = NodePath("BackgroundLeft")
+background_right_path = NodePath("BackgroundRight")
+
+[node name="BackgroundLeft" type="Sprite2D" parent="."]
+position = Vector2(-225, 75)
+texture = ExtResource("2_cx2rk")
+
+[node name="BackgroundRight" type="Sprite2D" parent="."]
+position = Vector2(225, 75)
+texture = ExtResource("2_cx2rk")

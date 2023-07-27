@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Hellevator-godot"
+run/main_scene="res://game_root.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

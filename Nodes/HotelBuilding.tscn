@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2yhro07qn267"]
+
+[ext_resource type="Script" path="res://Nodes/HotelBuilding.gd" id="1_k5im7"]
+
+[node name="HotelBuilding" type="Node2D"]
+script = ExtResource("1_k5im7")
+floor_prefab_path = "res://Nodes/HotelFloor.tscn"
+maximum_point_path = NodePath("MaximumPoint")
+minimum_point_path = NodePath("MinimumPoint")
+floor_root_path = NodePath("Floors")
+
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="MinimumPoint" type="Node2D" parent="."]
+
+[node name="MaximumPoint" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

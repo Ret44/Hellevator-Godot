@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://0kqkvlj6olim"]
 
 [ext_resource type="Script" path="res://Nodes/HotelFloor.gd" id="1_qclvp"]
-[ext_resource type="Texture2D" uid="uid://sgmx1eo6prpo" path="res://Sprites/Floors/corridor_0001.png" id="2_cx2rk"]
-[ext_resource type="SpriteFrames" uid="uid://csb60l1t34t8" path="res://Animations/guest009.tres" id="3_t3l2t"]
+[ext_resource type="Texture2D" uid="uid://sgmx1eo6prpo" path="res://Sprites/corridor_0001.png" id="2_tn2w0"]
+[ext_resource type="SpriteFrames" uid="uid://cfr1dgdysbs28" path="res://Animations/guest011.tres" id="3_cgtmg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o5wdn"]
 load_path = "res://.godot/imported/corridor_0001.png-370e9156347a6afaaab94fed1d471fc9.ctex"
@@ -14,12 +14,13 @@ size = Vector2(394, 16.5)
 size = Vector2(11, 150)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hoogj"]
-radius = 16.0
 
 [node name="Floor" type="Node2D"]
 script = ExtResource("1_qclvp")
 background_left_path = NodePath("BackgroundLeft")
 background_right_path = NodePath("BackgroundRight")
+wall_left_collider_path = NodePath("Collision/WallLeft")
+wall_right_collider_path = NodePath("Collision/WallRight")
 
 [node name="BackgroundLeft" type="Sprite2D" parent="."]
 position = Vector2(-225, -75)
@@ -27,7 +28,7 @@ texture = SubResource("CompressedTexture2D_o5wdn")
 
 [node name="BackgroundRight" type="Sprite2D" parent="."]
 position = Vector2(225, -75)
-texture = ExtResource("2_cx2rk")
+texture = ExtResource("2_tn2w0")
 
 [node name="Collision" type="StaticBody2D" parent="."]
 
@@ -60,9 +61,9 @@ position = Vector2(-230, -72)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
 scale = Vector2(0.4, 0.4)
-sprite_frames = ExtResource("3_t3l2t")
+sprite_frames = ExtResource("3_cgtmg")
 autoplay = "default"
-frame_progress = 0.463096
+frame_progress = 0.0333872
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_hoogj")

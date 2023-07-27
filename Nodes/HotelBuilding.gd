@@ -15,10 +15,17 @@ var floor_prefab
 @export var tutorial_guest_prefab_path : String
 #tutorial guest prefab
 
+@export var backgrounds_list = []
+var backgrounds = []
+@export var guests_animations_paths = []
+var guest_animations = []
+@export var spawners = []
+@export var floors = []
 
-var guests = []
-var spawners = []
-var floors = []
+@export var safe_zone_ok_path : String
+var safe_zone_ok
+@export var safe_zone_broken_path : String
+var safe_zone_broken 
 
 @export_node_path var maximum_point_path : NodePath
 var maximum_point : Node2D
@@ -42,10 +49,20 @@ func _ready():
 	minimum_point = get_node(minimum_point_path)
 	#maximum_point = get_node(maximum_point_path)
 	#minimum_point = get_node(minimum_point_path)
-	
-
+		
 	maximum_point.set_position(Vector2(self.get_position().x, maximum_point.get_position().y))
 	minimum_point.set_position(Vector2(self.get_position().x, minimum_point.get_position().y))
+	
+	for i in range(0, guests_animations_paths.size()):
+		guest_animations.push_back(load(guests_animations_paths[i]))
+		pass
+	
+	for i in range(0, backgrounds_list.size()):
+		backgrounds.push_back(load(backgrounds_list[i]))
+		pass
+	
+	safe_zone_ok = load(safe_zone_ok_path)
+	safe_zone_broken = load(safe_zone_broken_path)
 	
 	prepare_floors()
 	
@@ -62,11 +79,11 @@ func _process(delta):
 	pass
 
 func prepare_floors():
-	var new_floor
+	var new_floor : HotelFloor
 	
 	new_floor = floor_prefab.instantiate()
-	new_floor.is_lobby = true
-	new_floor.floor = 0
+	new_floor.set_as_lobby()
+	new_floor.set_background(safe_zone_broken)
 	add_floor(new_floor)
 	
 	for i in range(0, floor_count):
@@ -80,8 +97,7 @@ func add_floor(new_floor):
 	new_floor.floor = floors.size()
 	if(!new_floor.is_lobby):
 		new_floor.name = "Floor " + str(new_floor.floor)
-		# set background left
-		# set background right
+		new_floor.set_background(backgrounds[randi() % backgrounds.size()])
 		pass
 	else:
 		new_floor.name = "Lobby"

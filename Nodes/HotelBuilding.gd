@@ -57,8 +57,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#if current_state = gameplay
-	process_tilting()
-	process_spawning()
+	process_tilting(delta)
+	process_spawning(delta)
 	pass
 
 func prepare_floors():
@@ -76,7 +76,7 @@ func prepare_floors():
 	pass
 
 func add_floor(new_floor):
-	new_floor.set_position(Vector2(new_floor.get_position().x, 2.5 + 150 * floors.size() + 1))
+	new_floor.set_position(Vector2(new_floor.get_position().x, - 2.5 - 150 * floors.size() + 1))
 	new_floor.floor = floors.size()
 	if(!new_floor.is_lobby):
 		new_floor.name = "Floor " + str(new_floor.floor)
@@ -96,10 +96,54 @@ func add_floor(new_floor):
 	pass
 	
 
-func process_tilting():
+func process_tilting(delta):
+	"""
+			// calculate tilt timer
+		if (tiltPauseTimer < 0) {
+			tiltTimer += Time.deltaTime;
+
+			// tilt the building
+			float newSinValue = Mathf.Sin(tiltTimer * tiltSpeed);
+			transform.rotation = Quaternion.Euler(0, 0, newSinValue * maxTilt);
+
+			// check for tilt pause
+			if ((newSinValue < previousSinValue && !isSinDecreasing) || (newSinValue > previousSinValue && isSinDecreasing)) {
+				tiltPauseTimer = tiltPause;
+				isSinDecreasing = !isSinDecreasing;
+				if (tiltPause < 1.5f) {
+					tiltPause += 0.06f;
+					tiltSpeed += 0.03f;
+					tiltTimer = (tiltTimer * (tiltSpeed - 0.03f)) / tiltSpeed; 
+				}
+			}
+			previousSinValue = newSinValue;
+		}
+		else {
+			tiltPauseTimer -= Time.deltaTime;
+		}
+	"""
+	if(tilt_pause_timer < 0):
+		tilt_timer += delta
+		var new_sin_value = sin(tilt_timer * tilt_speed)
+		set_rotation_degrees(new_sin_value * max_tilt)
+		
+		if((new_sin_value < previous_sin_value && !is_sin_decreasing) || (new_sin_value > previous_sin_value && is_sin_decreasing)):
+			tilt_pause_timer = tilt_pause
+			is_sin_decreasing = !is_sin_decreasing
+			if(tilt_pause < 1.5):
+				tilt_pause += 0.05
+				tilt_speed += 0.03
+				tilt_timer = (tilt_timer * (tilt_speed - 0.03)) / tilt_speed
+				pass
+			pass
+		previous_sin_value = new_sin_value
+		pass
+	else:
+		tilt_pause_timer -= delta
+		pass	
 	pass
 	
-func process_spawning():
+func process_spawning(delta):
 	pass
 	
 	

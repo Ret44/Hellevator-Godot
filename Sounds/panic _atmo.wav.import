@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bq0r6u6ck1nfi"
+path="res://.godot/imported/panic _atmo.wav-c4ff3403160d3840bb324f3be7bfb758.sample"
+
+[deps]
+
+source_file="res://Sounds/panic _atmo.wav"
+dest_files=["res://.godot/imported/panic _atmo.wav-c4ff3403160d3840bb324f3be7bfb758.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

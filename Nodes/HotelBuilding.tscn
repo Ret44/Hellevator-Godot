@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2yhro07qn267"]
+[gd_scene load_steps=7 format=3 uid="uid://b2yhro07qn267"]
 
 [ext_resource type="Script" path="res://Nodes/HotelBuilding.gd" id="1_k5im7"]
+[ext_resource type="PackedScene" uid="uid://0kqkvlj6olim" path="res://Nodes/HotelFloor.tscn" id="2_whu54"]
+[ext_resource type="Texture2D" uid="uid://3mtenjcugu0p" path="res://Sprites/floor.png" id="3_7cgcm"]
+[ext_resource type="Texture2D" uid="uid://dpogadh467f82" path="res://Sprites/Floors/corridor_safeZone_broken.png" id="3_vhweu"]
+[ext_resource type="Texture2D" uid="uid://clcp34gtbmfe7" path="res://Sprites/Floors/corridor_safeZone_ok.png" id="4_bnxjd"]
+[ext_resource type="PackedScene" uid="uid://cfdwlxy4e0k66" path="res://Nodes/Elevator.tscn" id="6_jqap6"]
 
 [node name="HotelBuilding" type="Node2D"]
 script = ExtResource("1_k5im7")
+lobby_path = NodePath("Floors/Lobby")
 floor_prefab_path = "res://Nodes/HotelFloor.tscn"
+guest_prefab_path = "res://Nodes/HotelFloor.tscn"
 backgrounds_list = ["res://Sprites/Floors/corridor_0001.png", "res://Sprites/Floors/corridor_0002.png", "res://Sprites/Floors/corridor_0003.png", "res://Sprites/Floors/corridor_0004.png", "res://Sprites/Floors/corridor_0005.png"]
 guests_animations_paths = ["res://Animations/guest002.tres", "res://Animations/guest003.tres", "res://Animations/guest004.tres", "res://Animations/guest005.tres", "res://Animations/guest006.tres", "res://Animations/guest007.tres", "res://Animations/guest008.tres", "res://Animations/guest009.tres", "res://Animations/guest010.tres", "res://Animations/guest011.tres", "res://Animations/guest012.tres"]
 safe_zone_ok_path = "res://Sprites/Floors/corridor_safeZone_ok.png"
@@ -14,10 +21,37 @@ minimum_point_path = NodePath("MinimumPoint")
 floor_root_path = NodePath("Floors")
 
 [node name="Floors" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Lobby" parent="Floors" instance=ExtResource("2_whu54")]
+is_lobby = true
+
+[node name="BackgroundLeft" parent="Floors/Lobby" index="1"]
+position = Vector2(-283.5, -75)
+texture = ExtResource("3_vhweu")
+
+[node name="BackgroundRight" parent="Floors/Lobby" index="2"]
+texture = ExtResource("4_bnxjd")
+
+[node name="WallLeft" parent="Floors/Lobby/Collision" index="4"]
+disabled = true
+
+[node name="WallRight" parent="Floors/Lobby/Collision" index="5"]
+disabled = true
+
+[node name="DoorMechanism" parent="Floors/Lobby" index="5"]
+is_enabled = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Lobby"]
+position = Vector2(2, 231)
+scale = Vector2(1651.05, 463.238)
+texture = ExtResource("3_7cgcm")
+
+[node name="Elevator" parent="." instance=ExtResource("6_jqap6")]
 
 [node name="MinimumPoint" type="Node2D" parent="."]
 
 [node name="MaximumPoint" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[editable path="Floors/Lobby"]
+[editable path="Floors/Lobby/DoorMechanism"]

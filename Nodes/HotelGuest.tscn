@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct4anlkfe2ay1"]
+
+[ext_resource type="SpriteFrames" uid="uid://cfr1dgdysbs28" path="res://Animations/guest011.tres" id="1_l3n3n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hoogj"]
+
+[node name="HotelGuest" type="RigidBody2D"]
+position = Vector2(0, 0.03)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = ExtResource("1_l3n3n")
+autoplay = "default"
+frame_progress = 0.0333872
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hoogj")

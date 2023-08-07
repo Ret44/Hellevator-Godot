@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://ccqwbpuyr6yw1"]
+
+[ext_resource type="Texture2D" uid="uid://cm73eoyhhllsw" path="res://Sprites/Elevator/door_close.png" id="1_6mt2u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55qtv"]
+atlas = ExtResource("1_6mt2u")
+region = Rect2(0, 0, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atjg5"]
+atlas = ExtResource("1_6mt2u")
+region = Rect2(700, 0, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfgk7"]
+atlas = ExtResource("1_6mt2u")
+region = Rect2(1400, 0, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3up7l"]
+atlas = ExtResource("1_6mt2u")
+region = Rect2(0, 700, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pumxb"]
+atlas = ExtResource("1_6mt2u")
+region = Rect2(700, 700, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i662e"]
+atlas = ExtResource("1_6mt2u")
+region = Rect2(1400, 700, 700, 700)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55qtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atjg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfgk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3up7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pumxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i662e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

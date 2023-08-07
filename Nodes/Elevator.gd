@@ -43,8 +43,11 @@ func _process(delta):
 	current_floor = int(round(position.y)) - 1
 	process_movement(delta)
 	process_doors(delta)
-
+	
 #	current_axis_value = 
+
+	process_bell_girl_animation(delta)
+	process_camera(delta)
 	pass
 
 func process_movement(delta):

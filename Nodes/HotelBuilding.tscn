@@ -48,10 +48,14 @@ scale = Vector2(1651.05, 463.238)
 texture = ExtResource("3_7cgcm")
 
 [node name="Elevator" parent="." instance=ExtResource("6_jqap6")]
+main_camera_path = NodePath("../Camera2D")
 
 [node name="MinimumPoint" type="Node2D" parent="."]
 
 [node name="MaximumPoint" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [editable path="Floors/Lobby"]
 [editable path="Floors/Lobby/DoorMechanism"]

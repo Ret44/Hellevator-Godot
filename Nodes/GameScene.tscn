@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0rurfov36h5p"]
+
+[ext_resource type="Texture2D" uid="uid://b7ftp6lw8kcql" path="res://Sprites/Background/00_outside_sky.png" id="1_3k2ly"]
+[ext_resource type="Script" path="res://Nodes/GameScene.gd" id="1_5plew"]
+[ext_resource type="Texture2D" uid="uid://c4lrwbqucu4ld" path="res://Sprites/Background/corridor_safeZone_skyline2.png" id="2_th81x"]
+[ext_resource type="PackedScene" uid="uid://b2yhro07qn267" path="res://Nodes/HotelBuilding.tscn" id="3_n6138"]
+
+[node name="GameScene" type="Node"]
+script = ExtResource("1_5plew")
+hotel_path = NodePath("HotelBuilding")
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(2, -139)
+texture = ExtResource("1_3k2ly")
+
+[node name="Ground" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+texture = ExtResource("2_th81x")
+
+[node name="HotelBuilding" parent="." instance=ExtResource("3_n6138")]
+position = Vector2(0, 1)

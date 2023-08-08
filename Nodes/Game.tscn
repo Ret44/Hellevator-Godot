@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://pnvat0xlxpmq"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_qat8o"]
+[ext_resource type="Script" path="res://Scripts/GameState.gd" id="2_g1py5"]
+[ext_resource type="Script" path="res://Scripts/GameplayState.gd" id="3_ih5lv"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_qat8o")
+splash_state = NodePath("SplashScreenState")
+title_state = NodePath("TitleScreenState")
+tutorial_state = NodePath("TutorialState")
+gameplay_state = NodePath("GameplayState")
+outro_state = NodePath("OutroState")
+game_over_state = NodePath("GameOverState")
+
+[node name="SplashScreenState" type="Node" parent="."]
+script = ExtResource("2_g1py5")
+
+[node name="TitleScreenState" type="Node" parent="."]
+script = ExtResource("2_g1py5")
+
+[node name="TutorialState" type="Node" parent="."]
+script = ExtResource("2_g1py5")
+
+[node name="GameplayState" type="Node" parent="."]
+script = ExtResource("3_ih5lv")
+game_scene_path = "res://Nodes/GameScene.tscn"
+
+[node name="OutroState" type="Node" parent="."]
+script = ExtResource("2_g1py5")
+
+[node name="GameOverState" type="Node" parent="."]
+script = ExtResource("2_g1py5")

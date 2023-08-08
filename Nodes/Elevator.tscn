@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfdwlxy4e0k66"]
+[gd_scene load_steps=4 format=3 uid="uid://cfdwlxy4e0k66"]
 
 [ext_resource type="Script" path="res://Nodes/Elevator.gd" id="1_8hduw"]
 [ext_resource type="Texture2D" uid="uid://blatqmyulia57" path="res://Sprites/Elevator/elevator_inside.png" id="2_bk1l5"]
+[ext_resource type="SpriteFrames" uid="uid://b3lkvf2fvdejr" path="res://Animations/bell_girl.tres" id="3_p108e"]
 
 [node name="Elevator" type="Node2D"]
 script = ExtResource("1_8hduw")
 maximum_speed = 5.0
+bell_girl_path = NodePath("BellGirl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, -80)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(4, -80)
 scale = Vector2(0.291429, 0.291429)
 texture = ExtResource("2_bk1l5")
+
+[node name="BellGirl" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -92)
+scale = Vector2(0.28, 0.28)
+sprite_frames = ExtResource("3_p108e")
+animation = &"idle"

@@ -31,6 +31,7 @@ var previous_floor : int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_camera = get_node(main_camera_path)
+	bell_girl_animator = get_node(bell_girl_path)
 	pass # Replace with function body.
 
 func set_weighth(val):
@@ -93,6 +94,13 @@ func process_doors(delta):
 	pass
 
 func process_bell_girl_animation(delta):
+	if(Input.is_action_pressed("elevator_up")):
+		bell_girl_animator.play("going_up")
+	elif(Input.is_action_pressed("elevator_down")):
+		bell_girl_animator.play("going_down")
+	else:
+		bell_girl_animator.play("idle")
+		pass
 	pass
 
 func process_camera(delta):

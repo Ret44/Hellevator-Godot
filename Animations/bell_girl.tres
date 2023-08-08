@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://b3lkvf2fvdejr"]
+
+[ext_resource type="Texture2D" uid="uid://sifpomtt4imx" path="res://Sprites/Elevator/liftgirl_down.png" id="1_iwue4"]
+[ext_resource type="Texture2D" uid="uid://c8c41ieje344n" path="res://Sprites/Elevator/liftgirl_up.png" id="2_wyhy4"]
+[ext_resource type="Texture2D" uid="uid://bxlugd3knovet" path="res://Sprites/Elevator/liftgirl_idle.png" id="3_tdi8d"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iwue4")
+}],
+"loop": true,
+"name": &"going_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wyhy4")
+}],
+"loop": true,
+"name": &"going_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tdi8d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

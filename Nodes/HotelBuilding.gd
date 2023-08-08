@@ -1,3 +1,4 @@
+class_name HotelBuilding
 extends Node2D
 
 @export var floor_count : int = 5

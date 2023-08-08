@@ -40,20 +40,56 @@ func set_weighth(val):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#if current state gameplay or tutorial
-	current_floor = int(round(position.y)) - 1
-	process_movement(delta)
-	process_doors(delta)
+	if(Game.state_path == Game.gameplay_state):
+		current_floor = int(round(position.y)) - 1
+		process_movement(delta)
+		process_doors(delta)
 	
-#	current_axis_value = 
+#		current_axis_value = 
+		if(Input.is_action_just_pressed("elevator_up")):
+			Sounds.play(Sounds.lever_left)
+			pass
+		if(Input.is_action_just_pressed("elevator_down")):
+			Sounds.play(Sounds.lever_right)
+			pass
 
-	process_bell_girl_animation(delta)
-	process_camera(delta)
+		process_bell_girl_animation(delta)
+		process_camera(delta)
+	
+	#	Game.state.game_scene.sky.position = Vector2(0,position.y * 0.2)
+		pass
 	pass
 
 func process_movement(delta):
+	if(Game.state_path == Game.gameplay_state || Game.state_path == Game.tutorial_state):
+		var direction : int = 0
+		if(Input.is_action_pressed("elevator_up")):
+			direction = 1
+			pass
+		if(Input.is_action_pressed("elevator_down")):
+			direction = -1
+			pass
+		if(direction == 0 && previous_floor != current_floor):
+			Sounds.play(Sounds.bell)
+			previous_floor = current_floor
+			pass
+		if(position.y <= Game.state.game_scene.hotel.maximum_point.position.y):
+			position += Vector2(0,1) * maximum_speed * delta * direction
+			velocity = maximum_speed * delta * direction
+			pass
+		if(position.y > Game.state.game_scene.hotel.maximum_point.position.y):
+			position += Vector2(0,1) * velocity
+			if(velocity > -0.2):
+				velocity -= delta * 0.25
+			else:
+				velocity -= 0
+				pass
+			pass
+		pass
 	pass
 
 func process_doors(delta):
+	
 	pass
 
 func process_bell_girl_animation(delta):

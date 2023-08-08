@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://drl1b5fhlyggk"]
+[gd_scene load_steps=8 format=3 uid="uid://drl1b5fhlyggk"]
 
 [ext_resource type="Script" path="res://Nodes/Sounds.gd" id="1_j3iuu"]
 [ext_resource type="PackedScene" uid="uid://y2sw40ryuuq6" path="res://Nodes/AudioSourceBase.tscn" id="2_cfqj2"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cnyu346l3a0ws" path="res://Sounds/door_close.wav" id="4_qfadg"]
 [ext_resource type="AudioStream" uid="uid://diwaohka7cfot" path="res://Sounds/lever_left.wav" id="5_2bu26"]
 [ext_resource type="AudioStream" uid="uid://c2o7gm30ta7k4" path="res://Sounds/lever_right.wav" id="6_q5dl3"]
+[ext_resource type="AudioStream" uid="uid://clewfc2mvswef" path="res://Sounds/bell_01.wav" id="7_kaicu"]
 
 [node name="Sounds" type="Node"]
 script = ExtResource("1_j3iuu")
@@ -13,6 +14,7 @@ door_open = NodePath("DoorOpen")
 door_close = NodePath("DoorClose")
 lever_left = NodePath("LeverLeft")
 lever_right = NodePath("LeverRight")
+bell = NodePath("Bell")
 
 [node name="DoorOpen" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("3_pfh4l")
@@ -26,7 +28,11 @@ stream = ExtResource("5_2bu26")
 [node name="LeverRight" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("6_q5dl3")
 
+[node name="Bell" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("7_kaicu")
+
 [editable path="DoorOpen"]
 [editable path="DoorClose"]
 [editable path="LeverLeft"]
 [editable path="LeverRight"]
+[editable path="Bell"]

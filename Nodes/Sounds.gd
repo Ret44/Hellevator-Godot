@@ -4,6 +4,7 @@ extends Node
 @export_node_path var door_close : NodePath
 @export_node_path var lever_left : NodePath
 @export_node_path var lever_right : NodePath
+@export_node_path var bell : NodePath
 @export_node_path var panic : NodePath
 
 

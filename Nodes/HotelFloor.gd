@@ -3,7 +3,8 @@ extends Node2D
 
 @export var floor : int
 @export var spawned_guest : bool
-# TODO : DoorMechanism
+@export_node_path var door_mechanism_path : NodePath
+var door_mechanism : DoorMechanism
 @export var is_lobby : bool
 
 #@export var spawner_path : 
@@ -16,6 +17,10 @@ extends Node2D
 var wall_left_collider : CollisionShape2D
 @export_node_path var wall_right_collider_path : NodePath
 var wall_right_collider : CollisionShape2D
+
+func _ready():
+	door_mechanism = get_node(door_mechanism_path)
+	pass
 
 func set_as_lobby():
 	floor = 0

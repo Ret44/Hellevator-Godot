@@ -1,3 +1,4 @@
+class_name DoorMechanism
 extends Node2D
 
 @export_node_path var door_left_collider_path : NodePath

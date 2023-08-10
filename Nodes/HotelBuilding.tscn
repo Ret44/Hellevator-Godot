@@ -20,6 +20,9 @@ maximum_point_path = NodePath("MaximumPoint")
 minimum_point_path = NodePath("MinimumPoint")
 floor_root_path = NodePath("Floors")
 
+[node name="Elevator" parent="." instance=ExtResource("6_jqap6")]
+main_camera_path = NodePath("../Camera2D")
+
 [node name="Floors" type="Node2D" parent="."]
 position = Vector2(1, 0)
 
@@ -46,9 +49,6 @@ is_enabled = false
 position = Vector2(2, 231)
 scale = Vector2(1651.05, 463.238)
 texture = ExtResource("3_7cgcm")
-
-[node name="Elevator" parent="." instance=ExtResource("6_jqap6")]
-main_camera_path = NodePath("../Camera2D")
 
 [node name="MinimumPoint" type="Node2D" parent="."]
 

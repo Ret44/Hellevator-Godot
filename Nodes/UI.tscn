@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://i4qe0q3nmyre"]
+
+[ext_resource type="Script" path="res://Nodes/UI.gd" id="1_1j8hx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_amxlu"]
+font_size = 67
+
+[node name="Ui" type="Node"]
+script = ExtResource("1_1j8hx")
+current_floor_path = NodePath("CanvasLayer/UIRoot/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UIRoot" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UIRoot"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "694202137"
+label_settings = SubResource("LabelSettings_amxlu")

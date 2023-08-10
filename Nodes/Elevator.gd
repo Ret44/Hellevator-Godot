@@ -42,7 +42,8 @@ func set_weighth(val):
 func _process(delta):
 	#if current state gameplay or tutorial
 	if(Game.state_path == Game.gameplay_state):
-		current_floor = int(round(position.y)) - 1
+		current_floor = (position.y / (Game.state.game_scene.hotel.maximum_point.position.y / Game.state.game_scene.hotel.floor_count))
+	
 		process_movement(delta)
 		process_doors(delta)
 	
@@ -63,18 +64,27 @@ func _process(delta):
 
 func process_movement(delta):
 	if(Game.state_path == Game.gameplay_state || Game.state_path == Game.tutorial_state):
-		var direction : int = 0
-		if(Input.is_action_pressed("elevator_up")):
-			direction = 1
+		var maximum_point = Game.state.game_scene.hotel.maximum_point.position.y
+		var minimum_point = Game.state.game_scene.hotel.minimum_point.position.y
+		if(Input.is_action_pressed("elevator_up") && !Input.is_action_pressed("elevator_door_left") && !Input.is_action_pressed("elevator_door_right") && position.y > maximum_point):
+			position.y -= maximum_speed * delta
+			if(position.y < maximum_point):
+				position.y = maximum_point
+				pass
 			pass
-		if(Input.is_action_pressed("elevator_down")):
-			direction = -1
+		if(Input.is_action_pressed("elevator_down") && !Input.is_action_pressed("elevator_door_left") && !Input.is_action_pressed("elevator_door_right") && position.y < minimum_point):
+			position.y += maximum_speed * delta
+			if(position.y > minimum_point):
+				position.y = minimum_point
+				pass
 			pass
-		if(direction == 0 && previous_floor != current_floor):
+		if((Input.is_action_just_released("elevator_up") || Input.is_action_just_released("elevator_down")) && previous_floor != current_floor):
 			Sounds.play(Sounds.bell)
 			previous_floor = current_floor
+			UIManager.set_current_floor(current_floor)
 			pass
-		if(position.y <= Game.state.game_scene.hotel.maximum_point.position.y):
+		
+		'''if(position.y <= Game.state.game_scene.hotel.maximum_point.position.y):
 			position += Vector2(0,1) * maximum_speed * delta * direction
 			velocity = maximum_speed * delta * direction
 			pass
@@ -86,11 +96,42 @@ func process_movement(delta):
 				velocity -= 0
 				pass
 			pass
+		'''
 		pass
 	pass
 
 func process_doors(delta):
+	if(Input.is_action_pressed("elevator_door_left")):
+		print("[ELEVATOR] Open left door at "+str(current_floor))
+		var floor = Game.state.game_scene.hotel.floors[current_floor]
+		if(!floor.is_lobby):
+			floor.door_mechanism.open_left = true
+			pass
+		pass
 	
+	if(Input.is_action_just_released("elevator_door_left")):
+		print("[ELEVATOR] Close left door at "+str(current_floor))
+		var floor = Game.state.game_scene.hotel.floors[current_floor]
+		if(!floor.is_lobby):
+			floor.door_mechanism.open_left = false
+			pass
+		pass
+	
+	if(Input.is_action_pressed("elevator_door_right")):
+		print("[ELEVATOR] Open right door at "+str(current_floor))
+		var floor = Game.state.game_scene.hotel.floors[current_floor]
+		if(!floor.is_lobby):
+			floor.door_mechanism.open_right = true
+			pass
+		pass
+		
+	if(Input.is_action_just_released("elevator_door_right")):
+		print("[ELEVATOR] Close right door at "+str(current_floor))
+		var floor = Game.state.game_scene.hotel.floors[current_floor]
+		if(!floor.is_lobby):
+			floor.door_mechanism.open_right = false
+			pass
+		pass
 	pass
 
 func process_bell_girl_animation(delta):

@@ -124,31 +124,6 @@ func add_floor(new_floor):
 	
 
 func process_tilting(delta):
-	"""
-			// calculate tilt timer
-		if (tiltPauseTimer < 0) {
-			tiltTimer += Time.deltaTime;
-
-			// tilt the building
-			float newSinValue = Mathf.Sin(tiltTimer * tiltSpeed);
-			transform.rotation = Quaternion.Euler(0, 0, newSinValue * maxTilt);
-
-			// check for tilt pause
-			if ((newSinValue < previousSinValue && !isSinDecreasing) || (newSinValue > previousSinValue && isSinDecreasing)) {
-				tiltPauseTimer = tiltPause;
-				isSinDecreasing = !isSinDecreasing;
-				if (tiltPause < 1.5f) {
-					tiltPause += 0.06f;
-					tiltSpeed += 0.03f;
-					tiltTimer = (tiltTimer * (tiltSpeed - 0.03f)) / tiltSpeed; 
-				}
-			}
-			previousSinValue = newSinValue;
-		}
-		else {
-			tiltPauseTimer -= Time.deltaTime;
-		}
-	"""
 	if(tilt_pause_timer < 0):
 		tilt_timer += delta
 		var new_sin_value = sin(tilt_timer * tilt_speed)

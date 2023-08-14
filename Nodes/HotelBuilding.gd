@@ -148,7 +148,6 @@ func process_tilting(delta):
 	
 func process_spawning(delta):
 	spawn_delay_timer -= delta
-	print(spawn_delay_timer)
 	if(spawn_delay_timer <= 0):
 	
 		spawn_delay_timer = spawn_delay

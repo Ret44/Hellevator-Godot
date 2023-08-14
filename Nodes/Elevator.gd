@@ -83,20 +83,6 @@ func process_movement(delta):
 			previous_floor = current_floor
 			UIManager.set_current_floor(current_floor)
 			pass
-		
-		'''if(position.y <= Game.state.game_scene.hotel.maximum_point.position.y):
-			position += Vector2(0,1) * maximum_speed * delta * direction
-			velocity = maximum_speed * delta * direction
-			pass
-		if(position.y > Game.state.game_scene.hotel.maximum_point.position.y):
-			position += Vector2(0,1) * velocity
-			if(velocity > -0.2):
-				velocity -= delta * 0.25
-			else:
-				velocity -= 0
-				pass
-			pass
-		'''
 		pass
 	pass
 

@@ -58,7 +58,7 @@ func _process(delta):
 		process_bell_girl_animation(delta)
 		process_camera(delta)
 	
-	#	Game.state.game_scene.sky.position = Vector2(0,position.y * 0.2)
+		Game.state.game_scene.sky.position = Vector2(0,position.y * 0.9)
 		pass
 	pass
 

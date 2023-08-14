@@ -7,10 +7,12 @@
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_5plew")
+sky_path = NodePath("Sky")
 hotel_path = NodePath("HotelBuilding")
 
 [node name="Sky" type="Sprite2D" parent="."]
-position = Vector2(2, -139)
+position = Vector2(4, -564)
+scale = Vector2(2.77667, 2.77667)
 texture = ExtResource("1_3k2ly")
 
 [node name="Ground" type="Sprite2D" parent="."]
@@ -19,12 +21,7 @@ texture = ExtResource("2_th81x")
 
 [node name="HotelBuilding" parent="." instance=ExtResource("3_n6138")]
 position = Vector2(0, 1)
-floor_count = 5
 max_tilt = 25.0
-tilt_speed = 0.4
 tilt_pause = 0.5
 max_guests = 0
 spawn_delay = 0.0
-tutorial_guest_prefab_path = ""
-spawners = []
-floors = []

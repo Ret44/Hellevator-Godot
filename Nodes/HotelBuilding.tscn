@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2yhro07qn267"]
+[gd_scene load_steps=8 format=3 uid="uid://b2yhro07qn267"]
 
 [ext_resource type="Script" path="res://Nodes/HotelBuilding.gd" id="1_k5im7"]
 [ext_resource type="PackedScene" uid="uid://0kqkvlj6olim" path="res://Nodes/HotelFloor.tscn" id="2_whu54"]
@@ -7,11 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://clcp34gtbmfe7" path="res://Sprites/Floors/corridor_safeZone_ok.png" id="4_bnxjd"]
 [ext_resource type="PackedScene" uid="uid://cfdwlxy4e0k66" path="res://Nodes/Elevator.tscn" id="6_jqap6"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyr2k"]
+size = Vector2(156.5, 19)
+
 [node name="HotelBuilding" type="Node2D"]
 script = ExtResource("1_k5im7")
+max_guests = 5
+spawn_delay = 4.0
 lobby_path = NodePath("Floors/Lobby")
 floor_prefab_path = "res://Nodes/HotelFloor.tscn"
-guest_prefab_path = "res://Nodes/HotelFloor.tscn"
+guest_prefab_path = "res://Nodes/HotelGuest.tscn"
 backgrounds_list = ["res://Sprites/Floors/corridor_0001.png", "res://Sprites/Floors/corridor_0002.png", "res://Sprites/Floors/corridor_0003.png", "res://Sprites/Floors/corridor_0004.png", "res://Sprites/Floors/corridor_0005.png"]
 guests_animations_paths = ["res://Animations/guest002.tres", "res://Animations/guest003.tres", "res://Animations/guest004.tres", "res://Animations/guest005.tres", "res://Animations/guest006.tres", "res://Animations/guest007.tres", "res://Animations/guest008.tres", "res://Animations/guest009.tres", "res://Animations/guest010.tres", "res://Animations/guest011.tres", "res://Animations/guest012.tres"]
 safe_zone_ok_path = "res://Sprites/Floors/corridor_safeZone_ok.png"
@@ -29,6 +34,10 @@ position = Vector2(1, 0)
 [node name="Lobby" parent="Floors" instance=ExtResource("2_whu54")]
 is_lobby = true
 
+[node name="Shaft" parent="Floors/Lobby" index="0"]
+position = Vector2(1, -81.65)
+scale = Vector2(0.6, 0.557525)
+
 [node name="BackgroundLeft" parent="Floors/Lobby" index="1"]
 position = Vector2(-283.5, -75)
 texture = ExtResource("3_vhweu")
@@ -41,6 +50,10 @@ disabled = true
 
 [node name="WallRight" parent="Floors/Lobby/Collision" index="5"]
 disabled = true
+
+[node name="BottomFloor" type="CollisionShape2D" parent="Floors/Lobby/Collision" index="6"]
+position = Vector2(6.75, -6)
+shape = SubResource("RectangleShape2D_jyr2k")
 
 [node name="DoorMechanism" parent="Floors/Lobby" index="5"]
 is_enabled = false

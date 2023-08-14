@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Nodes/HotelFloor.gd" id="1_qclvp"]
 [ext_resource type="Texture2D" uid="uid://d4erec7yb1u3w" path="res://Sprites/Elevator/elevator_shaft.png" id="2_6a1c8"]
 [ext_resource type="Texture2D" uid="uid://sgmx1eo6prpo" path="res://Sprites/corridor_0001.png" id="2_tn2w0"]
-[ext_resource type="PackedScene" uid="uid://ct4anlkfe2ay1" path="res://Nodes/HotelGuest.tscn" id="4_6dhtv"]
 [ext_resource type="PackedScene" uid="uid://b6acgy3lshi81" path="res://Nodes/DoorMechanism.tscn" id="5_s2kud"]
+[ext_resource type="PackedScene" uid="uid://fl4a5huh4scm" path="res://Nodes/Spawner.tscn" id="6_f3tsf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o5wdn"]
 load_path = "res://.godot/imported/corridor_0001.png-370e9156347a6afaaab94fed1d471fc9.ctex"
@@ -62,10 +62,20 @@ shape = SubResource("RectangleShape2D_xtmpt")
 position = Vector2(504, -73)
 shape = SubResource("RectangleShape2D_xtmpt")
 
-[node name="RigidBody2D" parent="." instance=ExtResource("4_6dhtv")]
-position = Vector2(-134, -66)
-
 [node name="DoorMechanism" parent="." instance=ExtResource("5_s2kud")]
 is_enabled = true
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="SpawnerL1" parent="Spawners" instance=ExtResource("6_f3tsf")]
+
+[node name="SpawnerL2" parent="Spawners" instance=ExtResource("6_f3tsf")]
+position = Vector2(-134, -65)
+
+[node name="SpawnerP1" parent="Spawners" instance=ExtResource("6_f3tsf")]
+position = Vector2(134, -65)
+
+[node name="SpawnerP2" parent="Spawners" instance=ExtResource("6_f3tsf")]
+position = Vector2(434, -65)
 
 [editable path="DoorMechanism"]

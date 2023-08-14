@@ -7,8 +7,6 @@ extends Node2D
 var door_mechanism : DoorMechanism
 @export var is_lobby : bool
 
-#@export var spawner_path : 
-
 @export_node_path var background_left_path : NodePath
 @onready var background_left : Sprite2D = get_node(background_left_path)
 @export_node_path var background_right_path : NodePath

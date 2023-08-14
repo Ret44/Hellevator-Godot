@@ -19,3 +19,12 @@ texture = ExtResource("2_th81x")
 
 [node name="HotelBuilding" parent="." instance=ExtResource("3_n6138")]
 position = Vector2(0, 1)
+floor_count = 5
+max_tilt = 25.0
+tilt_speed = 0.4
+tilt_pause = 0.5
+max_guests = 0
+spawn_delay = 0.0
+tutorial_guest_prefab_path = ""
+spawners = []
+floors = []

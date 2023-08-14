@@ -23,6 +23,7 @@ var floor_prefab
 var backgrounds = []
 @export var guests_animations_paths = []
 var guest_animations = []
+@export var guests = []
 @export var spawners = []
 @export var floors = []
 
@@ -146,6 +147,22 @@ func process_tilting(delta):
 	pass
 	
 func process_spawning(delta):
+	spawn_delay_timer -= delta
+	print(spawn_delay_timer)
+	if(spawn_delay_timer <= 0):
+	
+		spawn_delay_timer = spawn_delay
+
+		if(guests.size() < max_guests):
+			print("[SPAWN] Spawning new guest")
+			var s = spawners[randi() % guests.size()]
+			var new_guest = get_node(guest_prefab_path).instantiate()
+			new_guest.position = s.position
+			s.get_parent().get_parent().add_child(new_guest)
+			new_guest.RandomizeValue(s.floorID)
+			guests.push_back(new_guest)
+			pass
+		pass
 	pass
 	
 	

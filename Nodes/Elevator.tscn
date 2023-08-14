@@ -13,11 +13,13 @@ maximum_speed = 125.0
 bell_girl_path = NodePath("BellGirl")
 
 [node name="Background" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(4, -80)
 scale = Vector2(0.291429, 0.291429)
 texture = ExtResource("2_bk1l5")
 
 [node name="BellGirl" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(-1, -92)
 scale = Vector2(0.28, 0.28)
 sprite_frames = ExtResource("3_p108e")

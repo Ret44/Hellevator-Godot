@@ -23,5 +23,5 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "694202137"
+text = "0"
 label_settings = SubResource("LabelSettings_amxlu")

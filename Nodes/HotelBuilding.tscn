@@ -12,8 +12,10 @@ size = Vector2(156.5, 19)
 
 [node name="HotelBuilding" type="Node2D"]
 script = ExtResource("1_k5im7")
-max_guests = 5
-spawn_delay = 4.0
+max_tilt = 20.0
+tilt_pause = 1.0
+max_guests = 20
+spawn_delay = 1.0
 lobby_path = NodePath("Floors/Lobby")
 floor_prefab_path = "res://Nodes/HotelFloor.tscn"
 guest_prefab_path = "res://Nodes/HotelGuest.tscn"
@@ -55,7 +57,7 @@ disabled = true
 position = Vector2(6.75, -6)
 shape = SubResource("RectangleShape2D_jyr2k")
 
-[node name="DoorMechanism" parent="Floors/Lobby" index="5"]
+[node name="DoorMechanism" parent="Floors/Lobby" index="4"]
 is_enabled = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Floors/Lobby"]

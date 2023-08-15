@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://i4qe0q3nmyre"]
+[gd_scene load_steps=8 format=3 uid="uid://i4qe0q3nmyre"]
 
 [ext_resource type="Script" path="res://Nodes/UI.gd" id="1_1j8hx"]
 [ext_resource type="Script" path="res://Nodes/FPS.gd" id="2_rllte"]
@@ -8,9 +8,24 @@
 font = ExtResource("2_suvoo")
 font_size = 67
 
+[sub_resource type="LabelSettings" id="LabelSettings_0vfrq"]
+font = ExtResource("2_suvoo")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_6lg2p"]
+font = ExtResource("2_suvoo")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_sxhc8"]
+font = ExtResource("2_suvoo")
+font_size = 20
+
 [node name="Ui" type="Node"]
 script = ExtResource("1_1j8hx")
 current_floor_path = NodePath("CanvasLayer/UIRoot/Floor")
+dudes_counter_path = NodePath("CanvasLayer/UIRoot/Dudes")
+timer_path = NodePath("CanvasLayer/UIRoot/Time")
+money_counter_path = NodePath("CanvasLayer/UIRoot/Money")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -23,9 +38,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Floor" type="Label" parent="CanvasLayer/UIRoot"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5
+offset_right = 23.5
+offset_bottom = 102.0
+grow_horizontal = 2
 text = "0"
 label_settings = SubResource("LabelSettings_amxlu")
 
@@ -43,3 +63,33 @@ grow_vertical = 0
 horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("2_rllte")
+
+[node name="Dudes" type="Label" parent="CanvasLayer/UIRoot"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Dudes: 0"
+label_settings = SubResource("LabelSettings_0vfrq")
+
+[node name="Time" type="Label" parent="CanvasLayer/UIRoot"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "00:00"
+label_settings = SubResource("LabelSettings_6lg2p")
+horizontal_alignment = 2
+
+[node name="Money" type="Label" parent="CanvasLayer/UIRoot"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "Money: 0 "
+label_settings = SubResource("LabelSettings_sxhc8")

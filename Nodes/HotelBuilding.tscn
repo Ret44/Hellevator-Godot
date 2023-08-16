@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2yhro07qn267"]
+[gd_scene load_steps=19 format=3 uid="uid://b2yhro07qn267"]
 
 [ext_resource type="Script" path="res://Nodes/HotelBuilding.gd" id="1_k5im7"]
 [ext_resource type="PackedScene" uid="uid://0kqkvlj6olim" path="res://Nodes/HotelFloor.tscn" id="2_whu54"]
@@ -6,9 +6,48 @@
 [ext_resource type="Texture2D" uid="uid://dpogadh467f82" path="res://Sprites/Floors/corridor_safeZone_broken.png" id="3_vhweu"]
 [ext_resource type="Texture2D" uid="uid://clcp34gtbmfe7" path="res://Sprites/Floors/corridor_safeZone_ok.png" id="4_bnxjd"]
 [ext_resource type="PackedScene" uid="uid://cfdwlxy4e0k66" path="res://Nodes/Elevator.tscn" id="6_jqap6"]
+[ext_resource type="Script" path="res://Nodes/SafeZone.gd" id="7_3bf7o"]
+[ext_resource type="Script" path="res://Nodes/RewardParticles.gd" id="8_ow8r4"]
+[ext_resource type="Texture2D" uid="uid://ddkusgoqrrl60" path="res://Sprites/Particles/coin01.png" id="9_hii34"]
+[ext_resource type="Texture2D" uid="uid://ctmkyijmksrjo" path="res://Sprites/Particles/coin02.png" id="10_6ve8k"]
+[ext_resource type="Texture2D" uid="uid://bjpi71uftrdvs" path="res://Sprites/Particles/coin03.png" id="11_yklcq"]
+[ext_resource type="Texture2D" uid="uid://cl6qyq4q8yn5c" path="res://Sprites/Particles/coin04.png" id="12_7uior"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyr2k"]
 size = Vector2(156.5, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc5wf"]
+size = Vector2(542, 97)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tvlia"]
+
+[sub_resource type="Gradient" id="Gradient_mh46x"]
+offsets = PackedFloat32Array(0.608696, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2vv0f"]
+gradient = SubResource("Gradient_mh46x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i0fuh"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+particle_flag_disable_z = true
+direction = Vector3(1, -16.635, 0)
+spread = 93.78
+gravity = Vector3(0, 125.69, 0)
+initial_velocity_min = 48.84
+initial_velocity_max = 65.65
+angular_velocity_min = 592.94
+angular_velocity_max = 635.29
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = -3.35
+linear_accel_max = 2.4
+angle_max = 444.7
+scale_min = 0.28
+scale_max = 0.28
+color_ramp = SubResource("GradientTexture1D_2vv0f")
 
 [node name="HotelBuilding" type="Node2D"]
 script = ExtResource("1_k5im7")
@@ -65,12 +104,68 @@ position = Vector2(2, 231)
 scale = Vector2(1651.05, 463.238)
 texture = ExtResource("3_7cgcm")
 
+[node name="SafeZoneLeft" type="Area2D" parent="Floors/Lobby"]
+position = Vector2(-273, -51)
+script = ExtResource("7_3bf7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Lobby/SafeZoneLeft"]
+shape = SubResource("RectangleShape2D_dc5wf")
+debug_color = Color(0.619608, 0.52549, 0.286275, 0.419608)
+
+[node name="SafeZoneRight" type="Area2D" parent="Floors/Lobby"]
+position = Vector2(273, -51)
+script = ExtResource("7_3bf7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Lobby/SafeZoneRight"]
+shape = SubResource("RectangleShape2D_dc5wf")
+debug_color = Color(0.619608, 0.52549, 0.286275, 0.419608)
+
 [node name="MinimumPoint" type="Node2D" parent="."]
 
 [node name="MaximumPoint" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="CoinParticles" type="Node2D" parent="."]
+position = Vector2(77, -69)
+script = ExtResource("8_ow8r4")
+emitters = [NodePath("GPUParticles2D"), NodePath("GPUParticles2D2"), NodePath("GPUParticles2D3"), NodePath("GPUParticles2D4")]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CoinParticles"]
+material = SubResource("CanvasItemMaterial_tvlia")
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_i0fuh")
+texture = ExtResource("9_hii34")
+one_shot = true
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="CoinParticles"]
+material = SubResource("CanvasItemMaterial_tvlia")
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_i0fuh")
+texture = ExtResource("10_6ve8k")
+one_shot = true
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="CoinParticles"]
+material = SubResource("CanvasItemMaterial_tvlia")
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_i0fuh")
+texture = ExtResource("11_yklcq")
+one_shot = true
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="CoinParticles"]
+material = SubResource("CanvasItemMaterial_tvlia")
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_i0fuh")
+texture = ExtResource("12_7uior")
+one_shot = true
+
+[connection signal="body_entered" from="Floors/Lobby/SafeZoneLeft" to="Floors/Lobby/SafeZoneLeft" method="_on_body_entered"]
+[connection signal="body_entered" from="Floors/Lobby/SafeZoneRight" to="Floors/Lobby/SafeZoneRight" method="_on_body_entered"]
 
 [editable path="Floors/Lobby"]
 [editable path="Floors/Lobby/DoorMechanism"]

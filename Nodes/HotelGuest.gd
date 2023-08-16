@@ -24,7 +24,7 @@ func _init():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mass_limit = Vector2(1,3)
-
+	animator = get_node(animator_path)
 	pass # Replace with function body.
 
 
@@ -71,7 +71,7 @@ func drop():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(position.y > 10):
-		free()
-		pass
+	#if(position.y > 10):
+	#	free()
+	#	pass
 	pass

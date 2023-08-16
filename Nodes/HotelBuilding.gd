@@ -15,6 +15,7 @@ var lobby : HotelFloor
 @export var floor_prefab_path : String
 var floor_prefab
 @export var guest_prefab_path : String
+var guest_prefab
 #guest prefab
 @export var tutorial_guest_prefab_path : String
 #tutorial guest prefab
@@ -47,8 +48,9 @@ var spawn_delay_timer : float
 var floor_root : Node2D
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	floor_prefab = load(floor_prefab_path) 
+func _ready():	
+	floor_prefab = load(floor_prefab_path)
+	guest_prefab = load(guest_prefab_path)
 	floor_root = get_node(floor_root_path)
 	lobby = get_node(lobby_path)
 	maximum_point = get_node(maximum_point_path)
@@ -153,12 +155,14 @@ func process_spawning(delta):
 		spawn_delay_timer = spawn_delay
 
 		if(guests.size() < max_guests):
-			print("[SPAWN] Spawning new guest")
-			var s = spawners[randi() % guests.size()]
-			var new_guest = get_node(guest_prefab_path).instantiate()
+			print("[SPAWN] Spawning new guest ID" + str(guests.size()))
+			var s = spawners[randi() % spawners.size()]
+			var new_guest = guest_prefab.instantiate()
 			new_guest.position = s.position
 			s.get_parent().get_parent().add_child(new_guest)
-			new_guest.RandomizeValue(s.floorID)
+			new_guest.randomize_value(s.floorID)
+			new_guest.name = "GuestID" + str(guests.size())
+			new_guest.animator.sprite_frames = load(guests_animations_paths[randi() % guests_animations_paths.size()])
 			guests.push_back(new_guest)
 			pass
 		pass

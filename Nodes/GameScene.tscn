@@ -21,7 +21,3 @@ texture = ExtResource("2_th81x")
 
 [node name="HotelBuilding" parent="." instance=ExtResource("3_n6138")]
 position = Vector2(0, 1)
-max_tilt = 25.0
-tilt_pause = 0.5
-max_guests = 0
-spawn_delay = 0.0

@@ -10,5 +10,7 @@ func get_floor_id():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hotel_floor = get_parent().get_parent()
-	Game.state.game_scene.hotel.spawners.push_back(self)
+	if(!hotel_floor.is_lobby):
+		Game.state.game_scene.hotel.spawners.push_back(self)
+		pass
 	pass # Replace with function body.

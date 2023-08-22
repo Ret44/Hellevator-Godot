@@ -17,7 +17,7 @@
 size = Vector2(156.5, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dc5wf"]
-size = Vector2(542, 97)
+size = Vector2(542, 63.5)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tvlia"]
 
@@ -105,16 +105,18 @@ scale = Vector2(1651.05, 463.238)
 texture = ExtResource("3_7cgcm")
 
 [node name="SafeZoneLeft" type="Area2D" parent="Floors/Lobby"]
-position = Vector2(-273, -51)
+position = Vector2(-273, -32)
 script = ExtResource("7_3bf7o")
+kick_direction = -1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Lobby/SafeZoneLeft"]
 shape = SubResource("RectangleShape2D_dc5wf")
 debug_color = Color(0.619608, 0.52549, 0.286275, 0.419608)
 
 [node name="SafeZoneRight" type="Area2D" parent="Floors/Lobby"]
-position = Vector2(273, -51)
+position = Vector2(273, -32)
 script = ExtResource("7_3bf7o")
+kick_direction = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Lobby/SafeZoneRight"]
 shape = SubResource("RectangleShape2D_dc5wf")

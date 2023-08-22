@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drl1b5fhlyggk"]
+[gd_scene load_steps=16 format=3 uid="uid://drl1b5fhlyggk"]
 
 [ext_resource type="Script" path="res://Nodes/Sounds.gd" id="1_j3iuu"]
 [ext_resource type="PackedScene" uid="uid://y2sw40ryuuq6" path="res://Nodes/AudioSourceBase.tscn" id="2_cfqj2"]
@@ -7,6 +7,14 @@
 [ext_resource type="AudioStream" uid="uid://diwaohka7cfot" path="res://Sounds/lever_left.wav" id="5_2bu26"]
 [ext_resource type="AudioStream" uid="uid://c2o7gm30ta7k4" path="res://Sounds/lever_right.wav" id="6_q5dl3"]
 [ext_resource type="AudioStream" uid="uid://clewfc2mvswef" path="res://Sounds/bell_01.wav" id="7_kaicu"]
+[ext_resource type="AudioStream" uid="uid://bb37yribbjw8" path="res://Sounds/engine_03.wav" id="7_pgee4"]
+[ext_resource type="AudioStream" uid="uid://dxqnyddjp4kmj" path="res://Sounds/panic_atmo.wav" id="8_17b8g"]
+[ext_resource type="AudioStream" uid="uid://bkcyynlh0q1mc" path="res://Sounds/cash_01.wav" id="8_b06o0"]
+[ext_resource type="AudioStream" uid="uid://b8qji3btydxt6" path="res://Sounds/cash_02.wav" id="9_wqovj"]
+[ext_resource type="AudioStream" uid="uid://cbc7jw3yiw72w" path="res://Sounds/cash_03.wav" id="10_boblo"]
+[ext_resource type="AudioStream" uid="uid://bijpcmlpq8fkb" path="res://Sounds/cash_04.wav" id="11_p7lb8"]
+[ext_resource type="AudioStream" uid="uid://c87aqhrfgrfhg" path="res://Sounds/cash_05.wav" id="12_urfeu"]
+[ext_resource type="AudioStream" uid="uid://bw2p6gddxx154" path="res://Sounds/cash_06.wav" id="13_vy5ua"]
 
 [node name="Sounds" type="Node"]
 script = ExtResource("1_j3iuu")
@@ -15,6 +23,9 @@ door_close = NodePath("DoorClose")
 lever_left = NodePath("LeverLeft")
 lever_right = NodePath("LeverRight")
 bell = NodePath("Bell")
+panic = NodePath("Panic")
+engine = NodePath("Engine")
+cash = [NodePath("Cash1"), NodePath("Cash2"), NodePath("Cash3"), NodePath("Cash4"), NodePath("Cash5"), NodePath("Cash6")]
 
 [node name="DoorOpen" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("3_pfh4l")
@@ -28,11 +39,43 @@ stream = ExtResource("5_2bu26")
 [node name="LeverRight" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("6_q5dl3")
 
+[node name="Engine" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("7_pgee4")
+
+[node name="Panic" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("8_17b8g")
+
 [node name="Bell" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("7_kaicu")
+
+[node name="Cash1" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("8_b06o0")
+
+[node name="Cash2" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("9_wqovj")
+
+[node name="Cash3" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("10_boblo")
+
+[node name="Cash4" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("11_p7lb8")
+
+[node name="Cash5" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("12_urfeu")
+
+[node name="Cash6" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("13_vy5ua")
 
 [editable path="DoorOpen"]
 [editable path="DoorClose"]
 [editable path="LeverLeft"]
 [editable path="LeverRight"]
+[editable path="Engine"]
+[editable path="Panic"]
 [editable path="Bell"]
+[editable path="Cash1"]
+[editable path="Cash2"]
+[editable path="Cash3"]
+[editable path="Cash4"]
+[editable path="Cash5"]
+[editable path="Cash6"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfii2a0qpxgxc"]
+[gd_scene load_steps=10 format=3 uid="uid://5mcl2xx3prjy"]
 
 [ext_resource type="Script" path="res://Nodes/RewardParticles.gd" id="1_n23p3"]
 [ext_resource type="Texture2D" uid="uid://ddkusgoqrrl60" path="res://Sprites/Particles/coin01.png" id="2_vnge8"]
@@ -39,7 +39,7 @@ color_ramp = SubResource("GradientTexture1D_2vv0f")
 [node name="CoinParticles" type="Node2D"]
 position = Vector2(77, -69)
 script = ExtResource("1_n23p3")
-emitters = [NodePath("GPUParticles2D"), NodePath("GPUParticles2D2"), NodePath("GPUParticles2D3"), NodePath("GPUParticles2D4")]
+emitters_path = [NodePath("GPUParticles2D"), NodePath("GPUParticles2D2"), NodePath("GPUParticles2D3"), NodePath("GPUParticles2D4")]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_tvlia")

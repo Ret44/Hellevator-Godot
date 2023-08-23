@@ -15,6 +15,9 @@ func _process(delta):
 func _on_body_entered(body):
 	if(body.is_in_group("Guests")):
 		print(body.name + " entered " + self.name)
+		var particles = Game.state.coin_particle.instantiate()
+		particles.position = body.position
+		body.get_parent().add_child(particles)
 		body.apply_impulse(Vector2(1000 * kick_direction, 0))
 		Sounds.play(Sounds.cash)
 		pass

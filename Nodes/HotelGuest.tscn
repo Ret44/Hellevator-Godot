@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Nodes/HotelGuest.gd" id="1_o386b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hoogj"]
-radius = 16.0294
+radius = 18.2434
 
 [node name="HotelGuest" type="RigidBody2D" groups=["Guests"]]
 position = Vector2(0, 0.03)

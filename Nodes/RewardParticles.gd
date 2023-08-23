@@ -1,11 +1,12 @@
 extends Node2D
 
-@export var emitters = []
+@export var emitters_path = []
+var emitters = []
 @export var lifetime : float
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(0, emitters.size()):
-		emitters[i] = get_node(emitters[i])
+	for i in range(0, emitters_path.size()):
+		emitters.push_back(get_node(emitters_path[i]))
 		pass
 	pass # Replace with function body.
 

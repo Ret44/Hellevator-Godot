@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfii2a0qpxgxc"]
+
+[ext_resource type="Script" path="res://Nodes/RewardParticles.gd" id="1_n23p3"]
+[ext_resource type="Texture2D" uid="uid://ddkusgoqrrl60" path="res://Sprites/Particles/coin01.png" id="2_vnge8"]
+[ext_resource type="Texture2D" uid="uid://ctmkyijmksrjo" path="res://Sprites/Particles/coin02.png" id="3_n3hhc"]
+[ext_resource type="Texture2D" uid="uid://bjpi71uftrdvs" path="res://Sprites/Particles/coin03.png" id="4_8wgab"]
+[ext_resource type="Texture2D" uid="uid://cl6qyq4q8yn5c" path="res://Sprites/Particles/coin04.png" id="5_uifdo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tvlia"]
+
+[sub_resource type="Gradient" id="Gradient_mh46x"]
+offsets = PackedFloat32Array(0.608696, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2vv0f"]
+gradient = SubResource("Gradient_mh46x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i0fuh"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+particle_flag_disable_z = true
+direction = Vector3(1, -16.635, 0)
+spread = 93.78
+gravity = Vector3(0, 125.69, 0)
+initial_velocity_min = 48.84
+initial_velocity_max = 65.65
+angular_velocity_min = 592.94
+angular_velocity_max = 635.29
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = -3.35
+linear_accel_max = 2.4
+angle_max = 444.7
+scale_min = 0.28
+scale_max = 0.28
+color_ramp = SubResource("GradientTexture1D_2vv0f")
+
+[node name="CoinParticles" type="Node2D"]
+position = Vector2(77, -69)
+script = ExtResource("1_n23p3")
+emitters = [NodePath("GPUParticles2D"), NodePath("GPUParticles2D2"), NodePath("GPUParticles2D3"), NodePath("GPUParticles2D4")]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_tvlia")
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_i0fuh")
+texture = ExtResource("2_vnge8")
+one_shot = true
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_tvlia")
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_i0fuh")
+texture = ExtResource("3_n3hhc")
+one_shot = true
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_tvlia")
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_i0fuh")
+texture = ExtResource("4_8wgab")
+one_shot = true
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_tvlia")
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_i0fuh")
+texture = ExtResource("5_uifdo")
+one_shot = true

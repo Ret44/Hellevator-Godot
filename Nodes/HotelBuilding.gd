@@ -9,6 +9,7 @@ extends Node2D
 @export var max_guests : int
 @export var spawn_delay : float
 
+@export_node_path var roof_path : NodePath
 @export_node_path var lobby_path : NodePath
 var lobby : HotelFloor
 
@@ -99,11 +100,14 @@ func prepare_floors():
 	
 	add_floor(lobby)
 	
-	
 	for i in range(1, floor_count):
 		new_floor = floor_prefab.instantiate()
 		add_floor(new_floor)
-		pass	
+		pass
+	
+	var roof = get_node(roof_path)
+	roof.position = Vector2(roof.get_position().x, - 150 * floors.size() + 1)
+	
 	pass
 
 func add_floor(new_floor):

@@ -33,7 +33,7 @@ func add_dude():
 	
 func set_dudes(value):
 	dudes_counter_value = value
-	dudes_counter.set_text("Dudes: %i" % dudes_counter_value)
+	dudes_counter.set_text(("Dudes: {count}").format({"count":str(dudes_counter_value)}))
 	pass
 
 func add_money(value):
@@ -42,5 +42,5 @@ func add_money(value):
 	
 func set_money(value):
 	money_value = value
-	money_counter.set_text("Money: %i" % money_value)
+	money_counter.set_text(("Money: {count}").format({"count":str(money_value)}))
 	pass

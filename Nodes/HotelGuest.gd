@@ -15,6 +15,8 @@ var checked_out : bool
 @export_node_path var animator_path : NodePath
 var animator : AnimatedSprite2D
 
+@export var checkout_timer : float = 10
+
 func _init():
 	money_particle_prefab = load(money_particle_path)
 	coin_particle_prefab = load(coin_particle_path)
@@ -38,40 +40,40 @@ func randomize_value(floor):
 
 func drop(): 
 	if(!checked_out):
-		# add people saved
-		# add money 
-		
-		
+		Game.state.add_dude()
+		Game.state.add_money(value)
+		var particles_prefab
+		var amount
+		if(value < 5):
+			particles_prefab = Game.state.coin_particle_prefab
+			amount = value * 1.5
+		else:
+			particles_prefab = Game.state.money_particle_prefab
+			amount = value - 4 / 2
+			pass		
+		var particles = particles_prefab.instantiate()
+		particles.position = position
+		get_parent().add_child(particles)
+		particles.emit(amount)
+		var kick_direction : float = 0
+		if(Game.state.game_scene.hotel.previous_sin_value < 0):
+			kick_direction = -1 
+		else:
+			kick_direction = 1
+			pass
+		apply_impulse(Vector2(1000 * kick_direction, 0))
+		Sounds.play(Sounds.cash)
+		Game.state.game_scene.hotel.guests.erase(self)
+		checked_out = true
 		pass
-	'''if (!checkedOut)
-	{
-		BuenoGameData.Instance.peopleSaved++;
-		BuenoGameData.Instance.AddMoney(value);
-
-		// spawn money particles
-		GameObject particle = Instantiate(value < 5 ? coinParticlePrefab : moneyParticlePrefab, transform.position, transform.rotation * Quaternion.Euler(0, 180, 0)) as GameObject;
-		particle.transform.parent = DirectoryManagement.Instance.particles;
-		float amount = value < 5 ? value * 1.5f : (value - 4) / 2;
-		particle.GetComponent<ParticleSystem>().Emit(Mathf.CeilToInt(amount));
-		Destroy(particle, 2f);
-
-		HotelBuilding.instance.guests.Remove(this);
-		UIManager.Instance.AddDude();
-		UIManager.Instance.SetMoney();
-
-		SoundPlayer.PlayCash();
-
-		checkedOut = true;
-	}
-	// push out the guest
-	float x = (HotelBuilding.instance.previousSinValue < 0) ? 1 : -1;
-	rigidbody.AddForce(new Vector2(x * 25f, 0f), ForceMode2D.Impulse);
-	'''
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#if(position.y > 10):
-	#	free()
-	#	pass
+	if(checked_out):
+		checkout_timer -= delta
+		if(checkout_timer <= 0):
+			free()
+			pass
+		pass
 	pass

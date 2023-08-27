@@ -10,7 +10,7 @@ func _ready():
 		pass
 	pass # Replace with function body.
 
-func emit():
+func emit(amount):
 	for i in range(0, emitters.size()):
 		emitters[i].restart()
 		pass

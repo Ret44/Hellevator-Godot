@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://clcp34gtbmfe7" path="res://Sprites/Floors/corridor_safeZone_ok.png" id="4_bnxjd"]
 [ext_resource type="PackedScene" uid="uid://cfdwlxy4e0k66" path="res://Nodes/Elevator.tscn" id="6_jqap6"]
 [ext_resource type="Script" path="res://Nodes/SafeZone.gd" id="7_3bf7o"]
-[ext_resource type="PackedScene" uid="uid://5mcl2xx3prjy" path="res://Nodes/CoinParticles.tscn" id="8_wd3ll"]
+[ext_resource type="PackedScene" uid="uid://bfii2a0qpxgxc" path="res://Nodes/CoinParticles.tscn" id="8_wd3ll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyr2k"]
 size = Vector2(156.5, 19)

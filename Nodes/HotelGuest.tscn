@@ -9,6 +9,8 @@ radius = 18.2434
 [node name="HotelGuest" type="RigidBody2D" groups=["Guests"]]
 position = Vector2(0, 0.03)
 script = ExtResource("1_o386b")
+money_particle_path = "res://Nodes/MoneyParticles.tscn"
+coin_particle_path = "res://Nodes/CoinParticles.tscn"
 animator_path = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

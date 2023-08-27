@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4bv2f0xn56ro"]
+[gd_scene load_steps=9 format=3 uid="uid://d4bv2f0xn56ro"]
 
-[ext_resource type="Script" path="res://Nodes/RewardParticles.gd" id="1_bb4rx"]
+[ext_resource type="Texture2D" uid="uid://bgpxh8dpw6pal" path="res://Sprites/Particles/notes.png" id="2_e18q1"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tvlia"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6eps8"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = true
 
 [sub_resource type="Gradient" id="Gradient_mh46x"]
 offsets = PackedFloat32Array(0.608696, 1)
@@ -12,17 +16,16 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_mh46x")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i0fuh"]
-lifetime_randomness = 1.0
 emission_shape = 1
-emission_sphere_radius = 0.01
+emission_sphere_radius = 8.61
 particle_flag_disable_z = true
 direction = Vector3(1, -16.635, 0)
 spread = 93.78
-gravity = Vector3(0, 125.69, 0)
-initial_velocity_min = 48.84
-initial_velocity_max = 65.65
-angular_velocity_min = 592.94
-angular_velocity_max = 635.29
+gravity = Vector3(0, 133.34, 0)
+initial_velocity_min = 90.85
+initial_velocity_max = 90.85
+angular_velocity_min = 30.25
+angular_velocity_max = 78.65
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 linear_accel_min = -3.35
@@ -31,17 +34,74 @@ angle_max = 444.7
 scale_min = 0.28
 scale_max = 0.28
 color_ramp = SubResource("GradientTexture1D_2vv0f")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6bmg0"]
+[sub_resource type="Animation" id="Animation_nmxge"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_psww2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_040i7"]
+_data = {
+"RESET": SubResource("Animation_psww2"),
+"default": SubResource("Animation_nmxge")
+}
 
 [node name="MoneyParticles" type="Node2D"]
-position = Vector2(77, -69)
-script = ExtResource("1_bb4rx")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_tvlia")
+z_index = 99
+material = SubResource("CanvasItemMaterial_6eps8")
 emitting = false
-amount = 2
+amount = 4
 process_material = SubResource("ParticleProcessMaterial_i0fuh")
-texture = SubResource("CompressedTexture2D_6bmg0")
+texture = ExtResource("2_e18q1")
+lifetime = 0.25
 one_shot = true
+visibility_rect = Rect2(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_040i7")
+}

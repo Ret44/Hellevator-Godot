@@ -84,6 +84,14 @@ func process_movement(delta):
 			UIManager.set_current_floor(current_floor)
 			pass
 		pass
+		
+		if(Input.is_action_just_pressed("elevator_up") || Input.is_action_just_pressed("elevator_down")):
+			Sounds.play(Sounds.engine)
+			pass
+		
+		if(Input.is_action_just_released("elevator_up") || Input.is_action_just_released("elevator_down")):
+			Sounds.stop(Sounds.engine)
+			pass
 	pass
 
 func process_doors(delta):

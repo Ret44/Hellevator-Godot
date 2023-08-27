@@ -96,9 +96,11 @@ debug_color = Color(0.619608, 0.52549, 0.286275, 0.419608)
 zoom = Vector2(2, 2)
 
 [node name="CoinParticles" parent="." instance=ExtResource("8_wd3ll")]
+visible = false
 
 [connection signal="body_entered" from="Floors/Lobby/SafeZoneLeft" to="Floors/Lobby/SafeZoneLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="Floors/Lobby/SafeZoneRight" to="Floors/Lobby/SafeZoneRight" method="_on_body_entered"]
 
 [editable path="Floors/Lobby"]
 [editable path="Floors/Lobby/DoorMechanism"]
+[editable path="CoinParticles"]

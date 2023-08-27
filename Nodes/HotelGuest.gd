@@ -54,7 +54,8 @@ func drop():
 		var particles = particles_prefab.instantiate()
 		particles.position = position
 		get_parent().add_child(particles)
-		particles.emit(amount)
+		particles.name = name + "Particles"
+		#particles.emit(amount)
 		var kick_direction : float = 0
 		if(Game.state.game_scene.hotel.previous_sin_value < 0):
 			kick_direction = -1 

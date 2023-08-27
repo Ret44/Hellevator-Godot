@@ -12,7 +12,9 @@ func _ready():
 
 func emit(amount):
 	for i in range(0, emitters.size()):
-		emitters[i].restart()
+		for a in range(0, amount):
+			emitters[i].emitting = true
+			pass
 		pass
 	pass
 

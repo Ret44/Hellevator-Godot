@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://5mcl2xx3prjy"]
+[gd_scene load_steps=12 format=3 uid="uid://bfii2a0qpxgxc"]
 
-[ext_resource type="Script" path="res://Nodes/RewardParticles.gd" id="1_n23p3"]
 [ext_resource type="Texture2D" uid="uid://ddkusgoqrrl60" path="res://Sprites/Particles/coin01.png" id="2_vnge8"]
 [ext_resource type="Texture2D" uid="uid://ctmkyijmksrjo" path="res://Sprites/Particles/coin02.png" id="3_n3hhc"]
 [ext_resource type="Texture2D" uid="uid://bjpi71uftrdvs" path="res://Sprites/Particles/coin03.png" id="4_8wgab"]
@@ -36,39 +35,169 @@ scale_min = 0.28
 scale_max = 0.28
 color_ramp = SubResource("GradientTexture1D_2vv0f")
 
+[sub_resource type="Animation" id="Animation_ypdnk"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D4:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_e8nbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D4:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hl8v5"]
+_data = {
+"RESET": SubResource("Animation_e8nbb"),
+"default": SubResource("Animation_ypdnk")
+}
+
 [node name="CoinParticles" type="Node2D"]
 position = Vector2(77, -69)
-script = ExtResource("1_n23p3")
-emitters_path = [NodePath("GPUParticles2D"), NodePath("GPUParticles2D2"), NodePath("GPUParticles2D3"), NodePath("GPUParticles2D4")]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 99
 material = SubResource("CanvasItemMaterial_tvlia")
 emitting = false
-amount = 2
+amount = 1
 process_material = SubResource("ParticleProcessMaterial_i0fuh")
 texture = ExtResource("2_vnge8")
 one_shot = true
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = 99
 material = SubResource("CanvasItemMaterial_tvlia")
 emitting = false
-amount = 2
+amount = 1
 process_material = SubResource("ParticleProcessMaterial_i0fuh")
 texture = ExtResource("3_n3hhc")
 one_shot = true
 
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+z_index = 99
 material = SubResource("CanvasItemMaterial_tvlia")
 emitting = false
-amount = 2
+amount = 1
 process_material = SubResource("ParticleProcessMaterial_i0fuh")
 texture = ExtResource("4_8wgab")
 one_shot = true
 
 [node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
+z_index = 99
 material = SubResource("CanvasItemMaterial_tvlia")
 emitting = false
-amount = 2
+amount = 1
 process_material = SubResource("ParticleProcessMaterial_i0fuh")
 texture = ExtResource("5_uifdo")
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_hl8v5")
+}

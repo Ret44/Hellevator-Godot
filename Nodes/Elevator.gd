@@ -43,7 +43,9 @@ func _process(delta):
 	#if current state gameplay or tutorial
 	if(Game.state_path == Game.gameplay_state):
 		current_floor = (position.y / (Game.state.game_scene.hotel.maximum_point.position.y / Game.state.game_scene.hotel.floor_count))
-	
+		if(current_floor >= Game.state.game_scene.hotel.floors.size()):
+			current_floor = Game.state.game_scene.hotel.floors.size() - 1
+			pass
 		process_movement(delta)
 		process_doors(delta)
 	

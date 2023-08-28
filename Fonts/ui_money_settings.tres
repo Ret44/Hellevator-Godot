@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://xmmqjlhxn2fo"]
+
+[ext_resource type="FontFile" uid="uid://b67he4402onco" path="res://Fonts/LeaBlock-Regular.ttf" id="1_gpx8e"]
+
+[resource]
+font = ExtResource("1_gpx8e")
+font_size = 30

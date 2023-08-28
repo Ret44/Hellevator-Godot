@@ -1,31 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://i4qe0q3nmyre"]
+[gd_scene load_steps=11 format=3 uid="uid://i4qe0q3nmyre"]
 
 [ext_resource type="Script" path="res://Nodes/UI.gd" id="1_1j8hx"]
 [ext_resource type="Script" path="res://Nodes/FPS.gd" id="2_rllte"]
-[ext_resource type="FontFile" uid="uid://b67he4402onco" path="res://Fonts/LeaBlock-Regular.ttf" id="2_suvoo"]
+[ext_resource type="Texture2D" uid="uid://baek8j3qyaj6q" path="res://Sprites/UI/ui_background.png" id="4_17ngm"]
+[ext_resource type="Texture2D" uid="uid://ofiua34wrltc" path="res://Sprites/UI/ui_floor.png" id="5_34bxs"]
+[ext_resource type="Script" path="res://Nodes/DudeGridContainer.gd" id="6_kse6r"]
+[ext_resource type="LabelSettings" uid="uid://3jp8x6edfjuw" path="res://Fonts/ui_timer_settings.tres" id="7_fsd53"]
+[ext_resource type="LabelSettings" uid="uid://xmmqjlhxn2fo" path="res://Fonts/ui_money_settings.tres" id="8_1tlu5"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_amxlu"]
-font = ExtResource("2_suvoo")
-font_size = 67
+[sub_resource type="AtlasTexture" id="AtlasTexture_epu8y"]
+atlas = ExtResource("5_34bxs")
+region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="LabelSettings" id="LabelSettings_0vfrq"]
-font = ExtResource("2_suvoo")
-font_size = 25
+[sub_resource type="Theme" id="Theme_b14yp"]
+GridContainer/constants/h_separation = -12
+GridContainer/constants/v_separation = -8
 
-[sub_resource type="LabelSettings" id="LabelSettings_6lg2p"]
-font = ExtResource("2_suvoo")
-font_size = 20
-
-[sub_resource type="LabelSettings" id="LabelSettings_sxhc8"]
-font = ExtResource("2_suvoo")
-font_size = 20
+[sub_resource type="Theme" id="Theme_7srgr"]
 
 [node name="Ui" type="Node"]
 script = ExtResource("1_1j8hx")
-current_floor_path = NodePath("CanvasLayer/UIRoot/Floor")
-dudes_counter_path = NodePath("CanvasLayer/UIRoot/Dudes")
-timer_path = NodePath("CanvasLayer/UIRoot/Time")
-money_counter_path = NodePath("CanvasLayer/UIRoot/Money")
+current_floor_path = NodePath("CanvasLayer/UIRoot/GUI/Floor")
+timer_path = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit1")
+dude_prefab_path = "res://Nodes/UIDude.tscn"
+dude_container_path = NodePath("CanvasLayer/UIRoot/GUI/GridContainer")
+money_counter_path = NodePath("CanvasLayer/UIRoot/GUI/Money")
+time_minutes_digit1 = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit1")
+time_minutes_digit2 = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit2")
+time_seconds_digit1 = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit1")
+time_seconds_digit2 = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -36,18 +39,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Floor" type="Label" parent="CanvasLayer/UIRoot"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -23.5
-offset_right = 23.5
-offset_bottom = 102.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_amxlu")
 
 [node name="FPS" type="Label" parent="CanvasLayer/UIRoot"]
 layout_mode = 1
@@ -64,32 +55,97 @@ horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("2_rllte")
 
-[node name="Dudes" type="Label" parent="CanvasLayer/UIRoot"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Dudes: 0"
-label_settings = SubResource("LabelSettings_0vfrq")
+[node name="GUI" type="TextureRect" parent="CanvasLayer/UIRoot"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 120.0
+grow_horizontal = 2
+texture = ExtResource("4_17ngm")
+stretch_mode = 3
 
-[node name="Time" type="Label" parent="CanvasLayer/UIRoot"]
+[node name="Floor" type="TextureRect" parent="CanvasLayer/UIRoot/GUI"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = -19.0
+offset_right = 734.0
+offset_bottom = 131.0
+texture = SubResource("AtlasTexture_epu8y")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/UIRoot/GUI"]
+layout_mode = 0
+offset_left = 708.0
+offset_top = 35.0
+offset_right = 952.0
+offset_bottom = 79.0
+theme = SubResource("Theme_b14yp")
+columns = 29
+script = ExtResource("6_kse6r")
+
+[node name="TimeMinutesDigit1" type="Label" parent="CanvasLayer/UIRoot/GUI"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -904.0
+offset_top = 47.0
+offset_right = -818.0
+offset_bottom = 91.0
 grow_horizontal = 0
-text = "00:00"
-label_settings = SubResource("LabelSettings_6lg2p")
-horizontal_alignment = 2
+text = "0"
+label_settings = ExtResource("7_fsd53")
 
-[node name="Money" type="Label" parent="CanvasLayer/UIRoot"]
+[node name="TimeMinutesDigit2" type="Label" parent="CanvasLayer/UIRoot/GUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -882.0
+offset_top = 47.0
+offset_right = -796.0
+offset_bottom = 91.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = ExtResource("7_fsd53")
+
+[node name="TimeSecondsDigit1" type="Label" parent="CanvasLayer/UIRoot/GUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -854.0
+offset_top = 47.0
+offset_right = -768.0
+offset_bottom = 91.0
+grow_horizontal = 0
+text = "0"
+label_settings = ExtResource("7_fsd53")
+
+[node name="TimeSecondsDigit2" type="Label" parent="CanvasLayer/UIRoot/GUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -835.0
+offset_top = 47.0
+offset_right = -749.0
+offset_bottom = 91.0
+grow_horizontal = 0
+text = "0"
+label_settings = ExtResource("7_fsd53")
+
+[node name="Money" type="Label" parent="CanvasLayer/UIRoot/GUI"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 40.0
+offset_left = 500.0
+offset_top = -76.0
+offset_right = 629.0
+offset_bottom = -29.0
 grow_vertical = 0
-text = "Money: 0 "
-label_settings = SubResource("LabelSettings_sxhc8")
+theme = SubResource("Theme_7srgr")
+text = "0
+"
+label_settings = ExtResource("8_1tlu5")

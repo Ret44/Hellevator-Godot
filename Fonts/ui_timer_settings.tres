@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://3jp8x6edfjuw"]
+
+[ext_resource type="FontFile" uid="uid://b67he4402onco" path="res://Fonts/LeaBlock-Regular.ttf" id="1_3jc14"]
+
+[resource]
+line_spacing = 1.0
+font = ExtResource("1_3jc14")
+font_size = 24
+font_color = Color(0, 0, 0, 1)

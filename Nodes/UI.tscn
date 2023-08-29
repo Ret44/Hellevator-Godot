@@ -25,10 +25,10 @@ timer_path = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit1")
 dude_prefab_path = "res://Nodes/UIDude.tscn"
 dude_container_path = NodePath("CanvasLayer/UIRoot/GUI/GridContainer")
 money_counter_path = NodePath("CanvasLayer/UIRoot/GUI/Money")
-time_minutes_digit1 = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit1")
-time_minutes_digit2 = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit2")
-time_seconds_digit1 = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit1")
-time_seconds_digit2 = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit2")
+time_minutes_digit1_path = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit1")
+time_minutes_digit2_path = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit2")
+time_seconds_digit1_path = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit1")
+time_seconds_digit2_path = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

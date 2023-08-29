@@ -19,10 +19,15 @@ var timer : Label
 var money_counter : Label
 var money_value : int = 0
 
-@export_node_path var time_minutes_digit1 : NodePath
-@export_node_path var time_minutes_digit2 : NodePath
-@export_node_path var time_seconds_digit1 : NodePath
-@export_node_path var time_seconds_digit2 : NodePath
+@export_node_path var time_minutes_digit1_path : NodePath
+@export_node_path var time_minutes_digit2_path : NodePath
+@export_node_path var time_seconds_digit1_path : NodePath
+@export_node_path var time_seconds_digit2_path : NodePath
+
+var time_minutes_digit1
+var time_minutes_digit2
+var time_seconds_digit1
+var time_seconds_digit2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +38,10 @@ func _ready():
 	money_counter = get_node(money_counter_path)
 	var dude_prefab = load(dude_prefab_path)
 	var dude_container = get_node(dude_container_path)
+	time_minutes_digit1 = get_node(time_minutes_digit1_path)
+	time_minutes_digit2 = get_node(time_minutes_digit2_path)
+	time_seconds_digit1 = get_node(time_seconds_digit1_path)
+	time_seconds_digit2 = get_node(time_seconds_digit2_path)
 	for i in range(0, 88):
 		var dude = dude_prefab.instantiate()
 		dude_container.add_child(dude)
@@ -67,4 +76,17 @@ func add_money(value):
 func set_money(value):
 	money_value = value
 	money_counter.set_text(str(money_value))
+	pass
+
+func set_time(value):
+	var minutes = floori(value / 60)
+	var seconds = ceili(fmod(value, 60))
+	if(seconds == 60):
+		seconds = 0
+		minutes += 1
+		pass
+	time_minutes_digit1.set_text(str(minutes / 10))
+	time_minutes_digit2.set_text(str(minutes % 10))
+	time_seconds_digit1.set_text(str(seconds / 10))
+	time_seconds_digit2.set_text(str(seconds % 10))
 	pass

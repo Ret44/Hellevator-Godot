@@ -27,6 +27,7 @@ script = ExtResource("3_ih5lv")
 game_scene_path = "res://Nodes/GameScene.tscn"
 coin_particle_path = "res://Nodes/CoinParticles.tscn"
 money_particle_path = "res://Nodes/MoneyParticles.tscn"
+round_time = 90.0
 
 [node name="OutroState" type="Node" parent="."]
 script = ExtResource("2_g1py5")

@@ -17,7 +17,7 @@ var lobby : HotelFloor
 var floor_prefab
 @export var guest_prefab_path : String
 var guest_prefab
-#guest prefab
+
 @export var tutorial_guest_prefab_path : String
 #tutorial guest prefab
 
@@ -48,6 +48,8 @@ var spawn_delay_timer : float
 @export var floor_root_path : NodePath
 var floor_root : Node2D
 
+@export var tutorial_active : bool
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	floor_prefab = load(floor_prefab_path)
@@ -56,9 +58,7 @@ func _ready():
 	lobby = get_node(lobby_path)
 	maximum_point = get_node(maximum_point_path)
 	minimum_point = get_node(minimum_point_path)
-	#maximum_point = get_node(maximum_point_path)
-	#minimum_point = get_node(minimum_point_path)
-		
+
 	maximum_point.set_position(Vector2(self.get_position().x, maximum_point.get_position().y))
 	minimum_point.set_position(Vector2(self.get_position().x, minimum_point.get_position().y))
 	
@@ -81,22 +81,14 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#if current_state = gameplay
-	if(Input.is_action_just_pressed("elevator_door_left")):
-		Sounds.play(Sounds.door_open)
+	if(tutorial_active != true):
+		process_tilting(delta)
+		process_spawning(delta)
 		pass
-	
-	process_tilting(delta)
-	process_spawning(delta)
 	pass
 
 func prepare_floors():
 	var new_floor : HotelFloor
-	
-	#new_floor = floor_prefab.instantiate()
-	#new_floor.set_as_lobby()
-	#new_floor.set_background(safe_zone_broken)
-	#add_floor(new_floor)
 	
 	add_floor(lobby)
 	

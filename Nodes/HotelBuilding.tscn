@@ -32,6 +32,7 @@ safe_zone_broken_path = "res://Sprites/Floors/corridor_safeZone_broken.png"
 maximum_point_path = NodePath("MaximumPoint")
 minimum_point_path = NodePath("MinimumPoint")
 floor_root_path = NodePath("Floors")
+tutorial_active = true
 
 [node name="Elevator" parent="." instance=ExtResource("6_jqap6")]
 main_camera_path = NodePath("../Camera2D")

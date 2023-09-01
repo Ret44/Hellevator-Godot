@@ -1,6 +1,9 @@
 class_name UI
 extends Node
 
+@export_node_path var ui_root_path : NodePath
+var ui_root
+
 @export_node_path var current_floor_path : NodePath
 var current_floor : TextureRect
 
@@ -29,9 +32,11 @@ var time_minutes_digit2
 var time_seconds_digit1
 var time_seconds_digit2
 
+var ui_tweener
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ui_root = get_node(ui_root_path)
 	current_floor = get_node(current_floor_path)
 	dudes_counter = get_node(dudes_counter_path)
 	timer = get_node(timer_path)
@@ -89,4 +94,26 @@ func set_time(value):
 	time_minutes_digit2.set_text(str(minutes % 10))
 	time_seconds_digit1.set_text(str(seconds / 10))
 	time_seconds_digit2.set_text(str(seconds % 10))
+	pass
+
+func show_hud(instant):
+	if(ui_tweener != null):
+		ui_tweener.stop()
+		ui_tweener.free()
+		pass
+	ui_root.modulate = Color(1,1,1,0)
+	ui_tweener = create_tween()
+	ui_tweener.tween_property(ui_root, "modulate", Color(1,1,1,1), 1)
+	ui_tweener.play()
+	pass
+	
+func hide_hud(instant):
+	if(ui_tweener != null):
+		ui_tweener.stop()
+		ui_tweener.free()
+		pass
+	ui_root.modulate = Color(1,1,1,1)
+	ui_tweener = create_tween()
+	ui_tweener.tween_property(ui_root, "modulate", Color(1,1,1,0), 1)
+	ui_tweener.play()
 	pass

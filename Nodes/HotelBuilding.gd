@@ -79,10 +79,12 @@ func _ready():
 	
 	prepare_floors()
 	
+	camera.shake(2.5)
+	UIManager.show_hud(true)
 	#if !skiptutorial SpawnTutorialguest
 	
 	pass # Replace with function body.
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(tutorial_active != true):

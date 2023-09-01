@@ -20,6 +20,7 @@ GridContainer/constants/v_separation = -8
 
 [node name="Ui" type="Node"]
 script = ExtResource("1_1j8hx")
+ui_root_path = NodePath("CanvasLayer/UIRoot")
 current_floor_path = NodePath("CanvasLayer/UIRoot/GUI/Floor")
 timer_path = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit1")
 dude_prefab_path = "res://Nodes/UIDude.tscn"

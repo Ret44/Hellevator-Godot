@@ -48,6 +48,9 @@ var spawn_delay_timer : float
 @export var floor_root_path : NodePath
 var floor_root : Node2D
 
+@export var camera_path : NodePath
+var camera
+
 @export var tutorial_active : bool
 	
 # Called when the node enters the scene tree for the first time.
@@ -58,6 +61,7 @@ func _ready():
 	lobby = get_node(lobby_path)
 	maximum_point = get_node(maximum_point_path)
 	minimum_point = get_node(minimum_point_path)
+	camera = get_node(camera_path)
 
 	maximum_point.set_position(Vector2(self.get_position().x, maximum_point.get_position().y))
 	minimum_point.set_position(Vector2(self.get_position().x, minimum_point.get_position().y))

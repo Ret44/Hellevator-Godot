@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://0kqkvlj6olim" path="res://Nodes/HotelFloor.tscn" id="2_whu54"]
 [ext_resource type="Texture2D" uid="uid://3mtenjcugu0p" path="res://Sprites/floor.png" id="3_7cgcm"]
 [ext_resource type="Texture2D" uid="uid://eoo47707wmw3" path="res://Sprites/Floors/roof.png" id="3_psnjv"]
-[ext_resource type="Texture2D" uid="uid://dpogadh467f82" path="res://Sprites/Floors/corridor_safeZone_broken.png" id="3_vhweu"]
 [ext_resource type="Texture2D" uid="uid://clcp34gtbmfe7" path="res://Sprites/Floors/corridor_safeZone_ok.png" id="4_bnxjd"]
 [ext_resource type="PackedScene" uid="uid://cfdwlxy4e0k66" path="res://Nodes/Elevator.tscn" id="6_jqap6"]
 [ext_resource type="Script" path="res://Nodes/SafeZone.gd" id="7_3bf7o"]
+[ext_resource type="Script" path="res://Nodes/CameraController.gd" id="8_sl4em"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyr2k"]
 size = Vector2(156.5, 19)
@@ -32,6 +32,7 @@ safe_zone_broken_path = "res://Sprites/Floors/corridor_safeZone_broken.png"
 maximum_point_path = NodePath("MaximumPoint")
 minimum_point_path = NodePath("MinimumPoint")
 floor_root_path = NodePath("Floors")
+camera_path = NodePath("Camera2D")
 tutorial_active = true
 
 [node name="Elevator" parent="." instance=ExtResource("6_jqap6")]
@@ -60,7 +61,7 @@ scale = Vector2(0.6, 0.557525)
 
 [node name="BackgroundLeft" parent="Floors/Lobby" index="1"]
 position = Vector2(-283.5, -75)
-texture = ExtResource("3_vhweu")
+texture = ExtResource("4_bnxjd")
 
 [node name="BackgroundRight" parent="Floors/Lobby" index="2"]
 texture = ExtResource("4_bnxjd")
@@ -107,6 +108,8 @@ debug_color = Color(0.619608, 0.52549, 0.286275, 0.419608)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+script = ExtResource("8_sl4em")
+shake_amount = 5.0
 
 [connection signal="body_entered" from="Floors/Lobby/SafeZoneLeft" to="Floors/Lobby/SafeZoneLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="Floors/Lobby/SafeZoneRight" to="Floors/Lobby/SafeZoneRight" method="_on_body_entered"]

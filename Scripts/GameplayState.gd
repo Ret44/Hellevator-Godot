@@ -51,7 +51,13 @@ func process_state_exit():
 	super()
 	game_scene.free()
 	pass
-	
+
+func start_game():
+	game_scene.camera.shake(2.5)
+	UIManager.show_hud(false)
+	game_scene.hotel.set_lobby_broken(true)
+	pass
+
 func process_input(delta):
 	
 	pass

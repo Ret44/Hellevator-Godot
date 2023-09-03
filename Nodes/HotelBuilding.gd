@@ -79,11 +79,17 @@ func _ready():
 	
 	prepare_floors()
 	
-	camera.shake(2.5)
-	UIManager.show_hud(true)
 	#if !skiptutorial SpawnTutorialguest
 	
 	pass # Replace with function body.
+
+func set_lobby_broken(state):
+	if state:
+		lobby.set_background(safe_zone_broken)
+	else:
+		lobby.set_background(safe_zone_ok)
+		pass
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -97,23 +97,33 @@ func set_time(value):
 	pass
 
 func show_hud(instant):
-	if(ui_tweener != null):
-		ui_tweener.stop()
-		ui_tweener.free()
+	stop_tweener()
+	if instant:
+		ui_root.modulate = Color(1,1,1,1)
+	else:
+		tween_hud(Color(1,1,1,0), Color(1,1,1,1), 1)
 		pass
-	ui_root.modulate = Color(1,1,1,0)
-	ui_tweener = create_tween()
-	ui_tweener.tween_property(ui_root, "modulate", Color(1,1,1,1), 1)
-	ui_tweener.play()
 	pass
 	
 func hide_hud(instant):
+	stop_tweener()
+	if instant:
+		ui_root.modulate = Color(1,1,1,0)
+	else:
+		tween_hud(Color(1,1,1,1), Color(1,1,1,0), 1)
+		pass
+	pass
+
+func tween_hud(from, to, time):
+	ui_root.modulate = from
+	ui_tweener = create_tween()
+	ui_tweener.tween_property(ui_root, "modulate", to, time)
+	ui_tweener.play()
+	pass
+
+func stop_tweener():
 	if(ui_tweener != null):
 		ui_tweener.stop()
 		ui_tweener.free()
 		pass
-	ui_root.modulate = Color(1,1,1,1)
-	ui_tweener = create_tween()
-	ui_tweener.tween_property(ui_root, "modulate", Color(1,1,1,0), 1)
-	ui_tweener.play()
 	pass

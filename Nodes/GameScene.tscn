@@ -1,9 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0rurfov36h5p"]
+[gd_scene load_steps=7 format=3 uid="uid://d0rurfov36h5p"]
 
 [ext_resource type="Texture2D" uid="uid://b7ftp6lw8kcql" path="res://Sprites/Background/00_outside_sky.png" id="1_3k2ly"]
 [ext_resource type="Script" path="res://Nodes/GameScene.gd" id="1_5plew"]
 [ext_resource type="Texture2D" uid="uid://c4lrwbqucu4ld" path="res://Sprites/Background/corridor_safeZone_skyline2.png" id="2_th81x"]
 [ext_resource type="PackedScene" uid="uid://b2yhro07qn267" path="res://Nodes/HotelBuilding.tscn" id="3_n6138"]
+
+[sub_resource type="Animation" id="Animation_02lmr"]
+resource_name = "begin_game"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HotelBuilding")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HotelBuilding/Camera2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [2.5],
+"method": &"shake"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a4mdg"]
+_data = {
+"begin_game": SubResource("Animation_02lmr")
+}
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_5plew")
@@ -21,3 +54,12 @@ texture = ExtResource("2_th81x")
 
 [node name="HotelBuilding" parent="." instance=ExtResource("3_n6138")]
 position = Vector2(0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a4mdg")
+}
+
+[editable path="HotelBuilding"]
+[editable path="HotelBuilding/Floors/Lobby"]
+[editable path="HotelBuilding/Floors/Lobby/DoorMechanism"]

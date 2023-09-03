@@ -21,8 +21,8 @@ func _ready():
 	money_particle_prefab = load(money_particle_path)
 	pass # Replace with function body.
 
-func process_state_enter():
-	super()
+func process_state_enter(args):
+	super(args)
 	game_scene = load(game_scene_path).instantiate()
 	get_tree().root.get_node("GameRoot").add_child(game_scene)
 	game_scene._ready()

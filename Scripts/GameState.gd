@@ -6,8 +6,13 @@ extends Node
 func _ready():
 	pass # Replace with function body.
 
-func process_state_enter():
+func process_state_enter(args):
 	print("[STATE] Entering state :" + name)
+	print("Entry arguments:")
+	for argKey in args:
+		var argValue = args[argKey]
+		print(" " + str(argKey) + " : " + str(argValue))
+		pass
 	pass
 
 func process_state_exit():

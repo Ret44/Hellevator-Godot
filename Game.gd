@@ -12,10 +12,10 @@ var state_path : NodePath
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_state(gameplay_state)
+	set_state(gameplay_state, { "start_tutorial" : false })
 	pass # Replace with function body.
 
-func set_state(new_state_path, with_transition = false):
+func set_state(new_state_path, args = {}, with_transition = false):
 	if(state!=null):
 		state.process_state_exit()
 		pass
@@ -23,7 +23,7 @@ func set_state(new_state_path, with_transition = false):
 	if(new_state!=null):
 		state = new_state
 		state_path = new_state_path
-		state.process_state_enter()
+		state.process_state_enter(args)
 		pass
 	pass
 

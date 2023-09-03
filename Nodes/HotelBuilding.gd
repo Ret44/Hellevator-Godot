@@ -28,6 +28,8 @@ var guest_animations = []
 @export var guests = []
 @export var spawners = []
 @export var floors = []
+@export_node_path var elevator_path : NodePath
+var elevator
 
 @export var safe_zone_ok_path : String
 var safe_zone_ok
@@ -51,7 +53,8 @@ var floor_root : Node2D
 @export var camera_path : NodePath
 var camera
 
-@export var tutorial_active : bool
+@export var is_tilting : bool
+@export var is_spawning : bool
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():	
@@ -62,6 +65,7 @@ func _ready():
 	maximum_point = get_node(maximum_point_path)
 	minimum_point = get_node(minimum_point_path)
 	camera = get_node(camera_path)
+	elevator = get_node(elevator_path)
 
 	maximum_point.set_position(Vector2(self.get_position().x, maximum_point.get_position().y))
 	minimum_point.set_position(Vector2(self.get_position().x, minimum_point.get_position().y))
@@ -93,10 +97,8 @@ func set_lobby_broken(state):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(tutorial_active != true):
-		process_tilting(delta)
-		process_spawning(delta)
-		pass
+	if is_tilting : process_tilting(delta)
+	if is_spawning : process_spawning(delta)
 	pass
 
 func prepare_floors():

@@ -27,13 +27,13 @@ floor_prefab_path = "res://Nodes/HotelFloor.tscn"
 guest_prefab_path = "res://Nodes/HotelGuest.tscn"
 backgrounds_list = ["res://Sprites/Floors/corridor_0001.png", "res://Sprites/Floors/corridor_0002.png", "res://Sprites/Floors/corridor_0003.png", "res://Sprites/Floors/corridor_0004.png", "res://Sprites/Floors/corridor_0005.png"]
 guests_animations_paths = ["res://Animations/guest002.tres", "res://Animations/guest003.tres", "res://Animations/guest004.tres", "res://Animations/guest005.tres", "res://Animations/guest006.tres", "res://Animations/guest007.tres", "res://Animations/guest008.tres", "res://Animations/guest009.tres", "res://Animations/guest010.tres", "res://Animations/guest011.tres", "res://Animations/guest012.tres"]
+elevator_path = NodePath("Elevator")
 safe_zone_ok_path = "res://Sprites/Floors/corridor_safeZone_ok.png"
 safe_zone_broken_path = "res://Sprites/Floors/corridor_safeZone_broken.png"
 maximum_point_path = NodePath("MaximumPoint")
 minimum_point_path = NodePath("MinimumPoint")
 floor_root_path = NodePath("Floors")
 camera_path = NodePath("Camera2D")
-tutorial_active = true
 
 [node name="Elevator" parent="." instance=ExtResource("6_jqap6")]
 main_camera_path = NodePath("../Camera2D")

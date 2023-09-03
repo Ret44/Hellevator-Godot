@@ -25,6 +25,10 @@ var pressed_up : bool
 
 var bell_girl_animator : AnimatedSprite2D
 
+enum TUTORIAL_BUTTON {UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3}
+	
+@export var tutorial_buttons = []
+
 var last_axis_value : float
 var previous_floor : int
 
@@ -32,11 +36,18 @@ var previous_floor : int
 func _ready():
 	main_camera = get_node(main_camera_path)
 	bell_girl_animator = get_node(bell_girl_path)
+	for btn in range(0,4):
+		get_node(tutorial_buttons[btn]).visible = false
 	pass # Replace with function body.
 
 func set_weighth(val):
 	current_weight += val
 	pass
+
+func get_tutorial_button(btn):
+	if(btn >= 0 && btn <= 4):
+		return get_node(tutorial_buttons[btn])
+		pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

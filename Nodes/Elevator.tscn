@@ -1,16 +1,81 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfdwlxy4e0k66"]
+[gd_scene load_steps=17 format=3 uid="uid://cfdwlxy4e0k66"]
 
 [ext_resource type="Script" path="res://Nodes/Elevator.gd" id="1_8hduw"]
 [ext_resource type="Texture2D" uid="uid://blatqmyulia57" path="res://Sprites/Elevator/elevator_inside.png" id="2_bk1l5"]
 [ext_resource type="SpriteFrames" uid="uid://b3lkvf2fvdejr" path="res://Animations/bell_girl.tres" id="3_p108e"]
+[ext_resource type="Texture2D" uid="uid://b4e81w7j28kl5" path="res://Sprites/Tutorial/key_up0001.png" id="4_tvpyy"]
+[ext_resource type="Texture2D" uid="uid://e3ngqsi0tehp" path="res://Sprites/Tutorial/key_down0001.png" id="5_k510i"]
+[ext_resource type="Texture2D" uid="uid://d35e1ukigpip8" path="res://Sprites/Tutorial/key_up0002.png" id="5_v8cou"]
+[ext_resource type="Texture2D" uid="uid://cvc2uyfq78yrt" path="res://Sprites/Tutorial/key_left0001.png" id="6_d8168"]
+[ext_resource type="Texture2D" uid="uid://1fhkhcigiayo" path="res://Sprites/Tutorial/key_down0002.png" id="7_fxmav"]
+[ext_resource type="Texture2D" uid="uid://xp3wsp8ht0mi" path="res://Sprites/Tutorial/key_right0001.png" id="7_yi3c1"]
+[ext_resource type="Texture2D" uid="uid://cmo3idojjllcn" path="res://Sprites/Tutorial/key_left0002.png" id="9_ppc72"]
+[ext_resource type="Texture2D" uid="uid://3e08b0nb5oll" path="res://Sprites/Tutorial/key_right0002.png" id="11_w16jp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwggk"]
 size = Vector2(117, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_806qp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tvpyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v8cou")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qliyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_k510i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fxmav")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0gort"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_d8168")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ppc72")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2xw8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yi3c1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w16jp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Elevator" type="Node2D"]
 script = ExtResource("1_8hduw")
 maximum_speed = 125.0
 bell_girl_path = NodePath("BellGirl")
+tutorial_buttons = [NodePath("Tutorial/UpButton"), NodePath("Tutorial/DownButton"), NodePath("Tutorial/LeftButton"), NodePath("Tutorial/RightButton")]
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = 1
@@ -34,3 +99,33 @@ shape = SubResource("RectangleShape2D_iwggk")
 [node name="Ceiling" type="CollisionShape2D" parent="Collider"]
 position = Vector2(1, -131)
 shape = SubResource("RectangleShape2D_iwggk")
+
+[node name="Tutorial" type="Node2D" parent="."]
+
+[node name="UpButton" type="AnimatedSprite2D" parent="Tutorial"]
+z_index = 15
+position = Vector2(2.08165e-12, -203)
+scale = Vector2(0.155, 0.155)
+sprite_frames = SubResource("SpriteFrames_806qp")
+autoplay = "default"
+
+[node name="DownButton" type="AnimatedSprite2D" parent="Tutorial"]
+z_index = 15
+position = Vector2(2.08165e-12, 40)
+scale = Vector2(0.155, 0.155)
+sprite_frames = SubResource("SpriteFrames_qliyr")
+autoplay = "default"
+
+[node name="LeftButton" type="AnimatedSprite2D" parent="Tutorial"]
+z_index = 15
+position = Vector2(-100, -76)
+scale = Vector2(0.155, 0.155)
+sprite_frames = SubResource("SpriteFrames_0gort")
+autoplay = "default"
+
+[node name="RightButton" type="AnimatedSprite2D" parent="Tutorial"]
+z_index = 15
+position = Vector2(100, -76)
+scale = Vector2(0.155, 0.155)
+sprite_frames = SubResource("SpriteFrames_2xw8c")
+autoplay = "default"

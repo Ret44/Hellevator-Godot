@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=3 uid="uid://5ytrg1nvw3tv"]
+
+[ext_resource type="Script" path="res://Nodes/TutorialGuest.gd" id="1_iiess"]
+[ext_resource type="Texture2D" uid="uid://cd5wr151mi3ky" path="res://Sprites/Guests/guestTutorial_0003.png" id="1_ndafg"]
+[ext_resource type="Texture2D" uid="uid://bn86mexquwxvm" path="res://Sprites/Guests/guestTutorial_0001.png" id="2_gqy58"]
+[ext_resource type="Texture2D" uid="uid://degp4w2cxa583" path="res://Sprites/Guests/guestTutorial_0002.png" id="3_1iydu"]
+[ext_resource type="Texture2D" uid="uid://bo6a7vmkjn6cs" path="res://Sprites/Guests/guestTutorial_0004.png" id="4_rihbo"]
+
+[sub_resource type="Animation" id="Animation_2t722"]
+resource_name = "idle"
+length = 0.2535
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_gqy58"), ExtResource("3_1iydu")]
+}
+
+[sub_resource type="Animation" id="Animation_i8hks"]
+resource_name = "walk"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_ndafg"), ExtResource("4_rihbo")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ajyg1"]
+_data = {
+"idle": SubResource("Animation_2t722"),
+"walk": SubResource("Animation_i8hks")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c4agj"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_egdj1"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qq7nf"]
+advance_mode = 2
+advance_condition = &"walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sbj35"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ace5n"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qfj81"]
+states/End/position = Vector2(906, 96)
+states/Start/position = Vector2(413, 96)
+states/idle/node = SubResource("AnimationNodeAnimation_c4agj")
+states/idle/position = Vector2(563, 96)
+states/walk/node = SubResource("AnimationNodeAnimation_egdj1")
+states/walk/position = Vector2(733, 96)
+transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_qq7nf"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_sbj35"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ace5n")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8guj"]
+size = Vector2(38, 45.875)
+
+[node name="TutorialGuest" type="RigidBody2D"]
+script = ExtResource("1_iiess")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -23)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("4_rihbo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_ajyg1")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_qfj81")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/idle = false
+parameters/conditions/walking = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23.0625)
+shape = SubResource("RectangleShape2D_d8guj")

@@ -129,3 +129,5 @@ position = Vector2(100, -76)
 scale = Vector2(0.155, 0.155)
 sprite_frames = SubResource("SpriteFrames_2xw8c")
 autoplay = "default"
+
+[connection signal="on_floor_changed" from="." to="." method="_on_floor_changed"]

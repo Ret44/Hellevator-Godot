@@ -158,5 +158,5 @@ func process_bell_girl_animation(delta):
 	pass
 
 func process_camera(delta):
-	main_camera.position = self.position
+	main_camera.position = Vector2(self.position.x, self.position.y - 100)
 	pass

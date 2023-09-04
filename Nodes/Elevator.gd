@@ -1,5 +1,7 @@
 extends Node2D
 
+signal on_floor_changed
+
 @export var skyline : Node2D
 
 @export var maximum_speed : float
@@ -73,6 +75,11 @@ func _process(delta):
 		pass
 	pass
 
+func _on_floor_changed():
+	previous_floor = current_floor
+	UIManager.set_current_floor(current_floor)
+	pass
+
 func process_movement(delta):
 	if(Game.state_path == Game.gameplay_state || Game.state_path == Game.tutorial_state):
 		var maximum_point = Game.state.game_scene.hotel.maximum_point.position.y
@@ -91,8 +98,9 @@ func process_movement(delta):
 			pass
 		if((Input.is_action_just_released("elevator_up") || Input.is_action_just_released("elevator_down")) && previous_floor != current_floor):
 			Sounds.play(Sounds.bell)
-			previous_floor = current_floor
-			UIManager.set_current_floor(current_floor)
+			if(previous_floor != current_floor):
+				on_floor_changed.emit()
+				pass
 			pass
 		pass
 		

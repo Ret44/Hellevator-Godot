@@ -7,9 +7,10 @@ var sky : Node2D
 var ground : Node2D
 @export_node_path var hotel_path : NodePath
 var hotel : HotelBuilding
-var camera : Camera2D :
-	get:
-		return hotel.camera
+var camera : Camera2D :	get = get_camera
+	
+func get_camera():
+	return hotel.camera
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

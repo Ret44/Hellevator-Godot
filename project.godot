@@ -18,6 +18,7 @@ boot_splash/icon="res://Sprites/Guests/guest011.png"
 
 [autoload]
 
+Globals="*res://Scripts/Globals.gd"
 Game="*res://Nodes/Game.tscn"
 Sounds="*res://Nodes/Sounds.tscn"
 UIManager="*res://Nodes/UI.tscn"

@@ -24,8 +24,6 @@ var pressed_up : bool
 @export_node_path var bell_girl_path : NodePath
 
 var bell_girl_animator : AnimatedSprite2D
-
-enum TUTORIAL_BUTTON {UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3}
 	
 @export var tutorial_buttons = []
 

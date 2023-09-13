@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Nodes/FPS.gd" id="2_rllte"]
 [ext_resource type="Texture2D" uid="uid://baek8j3qyaj6q" path="res://Sprites/UI/ui_background.png" id="4_17ngm"]
 [ext_resource type="Texture2D" uid="uid://ofiua34wrltc" path="res://Sprites/UI/ui_floor.png" id="5_34bxs"]
-[ext_resource type="LabelSettings" uid="uid://3jp8x6edfjuw" path="res://Fonts/ui_timer_settings.tres" id="7_fsd53"]
-[ext_resource type="LabelSettings" uid="uid://xmmqjlhxn2fo" path="res://Fonts/ui_money_settings.tres" id="8_1tlu5"]
+[ext_resource type="LabelSettings" path="res://Fonts/ui_timer_settings.tres" id="7_fsd53"]
+[ext_resource type="LabelSettings" path="res://Fonts/ui_money_settings.tres" id="8_1tlu5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epu8y"]
 atlas = ExtResource("5_34bxs")

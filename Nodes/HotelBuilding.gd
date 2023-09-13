@@ -19,7 +19,8 @@ var floor_prefab
 var guest_prefab
 
 @export var tutorial_guest_prefab_path : String
-#tutorial guest prefab
+var tutorial_guest_prefab
+var tutorial_guest
 
 @export var backgrounds_list = []
 var backgrounds = []
@@ -60,6 +61,7 @@ var camera
 func _ready():	
 	floor_prefab = load(floor_prefab_path)
 	guest_prefab = load(guest_prefab_path)
+	tutorial_guest_prefab = load(tutorial_guest_prefab_path)
 	floor_root = get_node(floor_root_path)
 	lobby = get_node(lobby_path)
 	maximum_point = get_node(maximum_point_path)
@@ -157,7 +159,27 @@ func process_tilting(delta):
 		tilt_pause_timer -= delta
 		pass	
 	pass
-	
+
+func spawn_guest(spawner, is_tutorial = false):
+	if !is_tutorial: print("[SPAWN] Spawning new guest ID" + str(guests.size()))
+	else: print("[SPAWN] Spawning tutorial guest")
+	var new_guest 
+	if !is_tutorial: new_guest = guest_prefab.instantiate()
+	else: new_guest = tutorial_guest_prefab.instantiate()
+	new_guest.position = spawner.position;
+	spawner.get_parent().get_parent().add_child(new_guest)
+	if !is_tutorial:
+		new_guest.randomize_value(spawner.floorID)
+		new_guest.name = "GuestID" + str(guests.size())
+		new_guest.animator.sprite_frames = load(guests_animations_paths[randi() % guests_animations_paths.size()])
+		new_guest.animator.play()
+		guests.push_back(new_guest)
+	else:
+		new_guest.name = "TutorialGuest"
+		tutorial_guest = new_guest
+		pass
+	pass
+
 func process_spawning(delta):
 	spawn_delay_timer -= delta
 	if(spawn_delay_timer <= 0):
@@ -167,14 +189,7 @@ func process_spawning(delta):
 		if(guests.size() < max_guests):
 			print("[SPAWN] Spawning new guest ID" + str(guests.size()))
 			var s = spawners[randi() % spawners.size()]
-			var new_guest = guest_prefab.instantiate()
-			new_guest.position = s.position
-			s.get_parent().get_parent().add_child(new_guest)
-			new_guest.randomize_value(s.floorID)
-			new_guest.name = "GuestID" + str(guests.size())
-			new_guest.animator.sprite_frames = load(guests_animations_paths[randi() % guests_animations_paths.size()])
-			new_guest.animator.play()
-			guests.push_back(new_guest)
+			spawn_guest(s, false)
 			pass
 		pass
 	pass

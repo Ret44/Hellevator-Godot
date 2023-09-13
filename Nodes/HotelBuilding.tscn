@@ -25,6 +25,7 @@ roof_path = NodePath("Floors/Roof")
 lobby_path = NodePath("Floors/Lobby")
 floor_prefab_path = "res://Nodes/HotelFloor.tscn"
 guest_prefab_path = "res://Nodes/HotelGuest.tscn"
+tutorial_guest_prefab_path = "res://Nodes/TutorialGuest.tscn"
 backgrounds_list = ["res://Sprites/Floors/corridor_0001.png", "res://Sprites/Floors/corridor_0002.png", "res://Sprites/Floors/corridor_0003.png", "res://Sprites/Floors/corridor_0004.png", "res://Sprites/Floors/corridor_0005.png"]
 guests_animations_paths = ["res://Animations/guest002.tres", "res://Animations/guest003.tres", "res://Animations/guest004.tres", "res://Animations/guest005.tres", "res://Animations/guest006.tres", "res://Animations/guest007.tres", "res://Animations/guest008.tres", "res://Animations/guest009.tres", "res://Animations/guest010.tres", "res://Animations/guest011.tres", "res://Animations/guest012.tres"]
 elevator_path = NodePath("Elevator")

@@ -83,7 +83,8 @@ func perform_tutorial(stage):
 			game_scene.hotel.is_spawning = false
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = true
 			game_scene.hotel.elevator.on_floor_changed.connect(on_tutorial_elevator_arrived)
-			
+		2:
+			game_scene.hotel.elevator.allow_movement = false
 	pass
 
 func on_tutorial_elevator_arrived():
@@ -112,7 +113,7 @@ func progress_gameplay(delta):
 func progress_tutorial(delta):
 	match tutorial_stage:
 		1:  
-			if game_scene.hotel.elevator.position.y >= -210 && game_scene.hotel.elevator.position.y <= -310:
-				progress_tutorial(2)
+			if game_scene.hotel.elevator.position.y <= -210 && game_scene.hotel.elevator.position.y >= -310:
+				tutorial_stage = 2
 		2: print("TUTORIAL STAGE 2")
 	pass

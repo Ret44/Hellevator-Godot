@@ -53,7 +53,7 @@ position = Vector2(0, 12)
 texture = ExtResource("2_th81x")
 
 [node name="HotelBuilding" parent="." instance=ExtResource("3_n6138")]
-position = Vector2(0, 1)
+position = Vector2(0, -20)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -110,7 +110,9 @@ func progress_gameplay(delta):
 	pass
 	
 func progress_tutorial(delta):
-	#match tutorial_stage:
-		#1:  if game_scene.hotel.elevator.current_floor == 3: progress_tutorial(2)
-		#2: print("TUTORIAL STAGE 2")
+	match tutorial_stage:
+		1:  
+			if game_scene.hotel.elevator.position.y >= -210 && game_scene.hotel.elevator.position.y <= -310:
+				progress_tutorial(2)
+		2: print("TUTORIAL STAGE 2")
 	pass

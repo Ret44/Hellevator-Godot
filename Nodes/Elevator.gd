@@ -11,6 +11,9 @@ signal on_floor_changed
 
 @export var current_floor : int
 
+@export var allow_movement : bool
+@export var allow_doors : bool
+
 # animations ?
 
 @export var deadzone_mod : float
@@ -57,8 +60,8 @@ func _process(delta):
 		if(current_floor >= Game.state.game_scene.hotel.floors.size()):
 			current_floor = Game.state.game_scene.hotel.floors.size() - 1
 			pass
-		process_movement(delta)
-		process_doors(delta)
+		if allow_movement: process_movement(delta)
+		if allow_doors: process_doors(delta)
 	
 #		current_axis_value = 
 		if(Input.is_action_just_pressed("elevator_up")):
@@ -115,7 +118,6 @@ func process_movement(delta):
 
 func process_doors(delta):
 	if(Input.is_action_pressed("elevator_door_left")):
-		print("[ELEVATOR] Open left door at "+str(current_floor))
 		var floor = Game.state.game_scene.hotel.floors[current_floor]
 		if(!floor.is_lobby):
 			floor.door_mechanism.open_left = true
@@ -123,7 +125,6 @@ func process_doors(delta):
 		pass
 	
 	if(Input.is_action_just_released("elevator_door_left")):
-		print("[ELEVATOR] Close left door at "+str(current_floor))
 		var floor = Game.state.game_scene.hotel.floors[current_floor]
 		if(!floor.is_lobby):
 			floor.door_mechanism.open_left = false
@@ -131,7 +132,6 @@ func process_doors(delta):
 		pass
 	
 	if(Input.is_action_pressed("elevator_door_right")):
-		print("[ELEVATOR] Open right door at "+str(current_floor))
 		var floor = Game.state.game_scene.hotel.floors[current_floor]
 		if(!floor.is_lobby):
 			floor.door_mechanism.open_right = true
@@ -139,7 +139,6 @@ func process_doors(delta):
 		pass
 		
 	if(Input.is_action_just_released("elevator_door_right")):
-		print("[ELEVATOR] Close right door at "+str(current_floor))
 		var floor = Game.state.game_scene.hotel.floors[current_floor]
 		if(!floor.is_lobby):
 			floor.door_mechanism.open_right = false

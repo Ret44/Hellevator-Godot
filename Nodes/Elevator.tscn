@@ -74,6 +74,8 @@ animations = [{
 [node name="Elevator" type="Node2D"]
 script = ExtResource("1_8hduw")
 maximum_speed = 125.0
+allow_movement = true
+allow_doors = true
 bell_girl_path = NodePath("BellGirl")
 tutorial_buttons = [NodePath("Tutorial/UpButton"), NodePath("Tutorial/DownButton"), NodePath("Tutorial/LeftButton"), NodePath("Tutorial/RightButton")]
 

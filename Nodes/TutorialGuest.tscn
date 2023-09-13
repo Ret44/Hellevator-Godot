@@ -82,7 +82,7 @@ script = ExtResource("1_iiess")
 z_index = 5
 position = Vector2(0, -23)
 scale = Vector2(0.36, 0.36)
-texture = ExtResource("4_rihbo")
+texture = ExtResource("2_gqy58")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

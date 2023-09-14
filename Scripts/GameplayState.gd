@@ -73,20 +73,6 @@ func start_game():
 		tutorial_guest.free()
 	pass
 
-func perform_tutorial(stage):
-	tutorial_stage = stage
-	match stage:
-		1:
-			UIManager.hide_hud(true)
-			game_scene.hotel.set_lobby_broken(false)
-			game_scene.hotel.is_tilting = false
-			game_scene.hotel.is_spawning = false
-			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = true
-			game_scene.hotel.elevator.on_floor_changed.connect(on_tutorial_elevator_arrived)
-		2:
-			game_scene.hotel.elevator.allow_movement = false
-	pass
-
 func on_tutorial_elevator_arrived():
 	print("GAMESTATE SIGNAL")
 	pass
@@ -108,12 +94,48 @@ func progress_gameplay(delta):
 			pass
 		UIManager.set_time(timer)
 		pass
+	pass	
+
+func perform_tutorial(stage):
+	tutorial_stage = stage
+	match stage:
+		1:
+			UIManager.hide_hud(true)
+			game_scene.hotel.set_lobby_broken(false)
+			game_scene.hotel.is_tilting = false
+			game_scene.hotel.is_spawning = false
+			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = true
+			game_scene.hotel.elevator.on_floor_changed.connect(on_tutorial_elevator_arrived)
+		2:
+			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = false
+			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.RIGHT).visible = true
+			game_scene.hotel.elevator.allow_movement = false
+		3:
+			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.RIGHT).visible = false
+			game_scene.hotel.elevator.allow_doors = false
 	pass
 	
 func progress_tutorial(delta):
 	match tutorial_stage:
 		1:  
-			if game_scene.hotel.elevator.position.y <= -210 && game_scene.hotel.elevator.position.y >= -310:
-				tutorial_stage = 2
-		2: print("TUTORIAL STAGE 2")
+			if game_scene.hotel.elevator.position.y > -210:
+				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = true
+				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = false
+				pass
+			elif game_scene.hotel.elevator.position.y <= -210 && game_scene.hotel.elevator.position.y >= -310:
+				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = false
+				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = false
+				pass
+			elif game_scene.hotel.elevator.position.y < -310:
+				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = false
+				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = true
+				pass
+			if game_scene.hotel.elevator.position.y <= -210 && game_scene.hotel.elevator.position.y >= -310 && !game_scene.hotel.elevator.is_moving:
+				perform_tutorial(2)
+		2: 
+			if Input.is_action_just_pressed("elevator_door_right"):
+				Game.state.game_scene.hotel.floors[2].door_mechanism.open_right = true
+				perform_tutorial(3)
+		3:
+			print("TUTORIAL_STAGE 3")
 	pass

@@ -4,7 +4,6 @@ class_name GameplayState
 
 @export var game_scene_path : String
 var game_scene
-
 @export var people_saved : int = 0
 @export var money : int = 0
 @export var coin_particle_path : String
@@ -106,6 +105,7 @@ func perform_tutorial(stage):
 			game_scene.hotel.is_spawning = false
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = true
 			game_scene.hotel.elevator.on_floor_changed.connect(on_tutorial_elevator_arrived)
+			spawn_tutorial_guest()
 		2:
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = false
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.RIGHT).visible = true
@@ -113,8 +113,28 @@ func perform_tutorial(stage):
 		3:
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.RIGHT).visible = false
 			game_scene.hotel.elevator.allow_doors = false
+			game_scene.hotel.tutorial_guest.move_to_elevator()
+		4:
+			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = true
+			game_scene.hotel.elevator.allow_doors = true
+			game_scene.hotel.elevator.allow_movement = true
+			Game.state.game_scene.hotel.floors[2].door_mechanism.open_right = false
+		5: 
+			start_game()
 	pass
 	
+func spawn_tutorial_guest():
+	var tutorial_spawner
+	for i in range(0,game_scene.hotel.spawners.size()):
+		if game_scene.hotel.spawners[i].name == "2SpawnerP1":
+			tutorial_spawner = game_scene.hotel.spawners[i]
+			break
+		pass
+	if tutorial_spawner != null:
+		game_scene.hotel.spawn_guest(tutorial_spawner, true)
+		pass
+	pass
+
 func progress_tutorial(delta):
 	match tutorial_stage:
 		1:  
@@ -136,6 +156,6 @@ func progress_tutorial(delta):
 			if Input.is_action_just_pressed("elevator_door_right"):
 				Game.state.game_scene.hotel.floors[2].door_mechanism.open_right = true
 				perform_tutorial(3)
-		3:
-			print("TUTORIAL_STAGE 3")
+		4:  if game_scene.hotel.elevator.position.y > -1.2 :
+				perform_tutorial(5)
 	pass

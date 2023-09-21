@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5ytrg1nvw3tv"]
+[gd_scene load_steps=16 format=3 uid="uid://s88ax6gadcq2"]
 
 [ext_resource type="Script" path="res://Nodes/TutorialGuest.gd" id="1_iiess"]
 [ext_resource type="Texture2D" uid="uid://cd5wr151mi3ky" path="res://Sprites/Guests/guestTutorial_0003.png" id="1_ndafg"]
@@ -75,7 +75,8 @@ transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8guj"]
 size = Vector2(38, 45.875)
 
-[node name="TutorialGuest" type="RigidBody2D"]
+[node name="TutorialGuest" type="RigidBody2D" groups=["TutorialGuest"]]
+can_sleep = false
 script = ExtResource("1_iiess")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

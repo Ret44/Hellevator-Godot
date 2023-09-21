@@ -163,3 +163,9 @@ func process_bell_girl_animation(delta):
 func process_camera(delta):
 	main_camera.position = Vector2(self.position.x, self.position.y - 100)
 	pass
+
+
+func _on_tutorial_guest_hold_body_entered(body):
+	if(body.is_in_group("TutorialGuest")):
+		Game.state.perform_tutorial(4)
+	pass # Replace with function body.

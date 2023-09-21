@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfdwlxy4e0k66"]
+[gd_scene load_steps=18 format=3 uid="uid://cfdwlxy4e0k66"]
 
 [ext_resource type="Script" path="res://Nodes/Elevator.gd" id="1_8hduw"]
 [ext_resource type="Texture2D" uid="uid://blatqmyulia57" path="res://Sprites/Elevator/elevator_inside.png" id="2_bk1l5"]
@@ -71,6 +71,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2nec"]
+size = Vector2(53, 106)
+
 [node name="Elevator" type="Node2D"]
 script = ExtResource("1_8hduw")
 maximum_speed = 125.0
@@ -132,4 +135,16 @@ scale = Vector2(0.155, 0.155)
 sprite_frames = SubResource("SpriteFrames_2xw8c")
 autoplay = "default"
 
+[node name="TutorialGuestHold" type="Area2D" parent="Tutorial"]
+z_index = 97
+position = Vector2(2.1684e-19, 0)
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial/TutorialGuestHold"]
+position = Vector2(-30, -72)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_o2nec")
+debug_color = Color(0.745098, 0.294118, 0.886275, 0.419608)
+
 [connection signal="on_floor_changed" from="." to="." method="_on_floor_changed"]
+[connection signal="body_entered" from="Tutorial/TutorialGuestHold" to="." method="_on_tutorial_guest_hold_body_entered"]

@@ -11,6 +11,9 @@ func get_floor_id():
 func _ready():
 	hotel_floor = get_parent().get_parent()
 	if(!hotel_floor.is_lobby):
+		name = str(hotel_floor.floor)+name
 		Game.state.game_scene.hotel.spawners.push_back(self)
+	else:
+		name = "L" + name
 		pass
 	pass # Replace with function body.

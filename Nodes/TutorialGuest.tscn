@@ -72,18 +72,19 @@ states/walk/node = SubResource("AnimationNodeAnimation_egdj1")
 states/walk/position = Vector2(733, 96)
 transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_qq7nf"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_sbj35"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ace5n")]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8guj"]
-size = Vector2(38, 45.875)
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7hmw"]
+radius = 22.02
 
-[node name="TutorialGuest" type="RigidBody2D" groups=["TutorialGuest"]]
-can_sleep = false
+[node name="TutorialGuest" type="CharacterBody2D" groups=["TutorialGuest"]]
 script = ExtResource("1_iiess")
+walking_speed = 175.095
+gravity = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
 position = Vector2(0, -23)
 scale = Vector2(0.36, 0.36)
-texture = ExtResource("2_gqy58")
+texture = ExtResource("3_1iydu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -100,4 +101,4 @@ parameters/conditions/walking = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -23.0625)
-shape = SubResource("RectangleShape2D_d8guj")
+shape = SubResource("CircleShape2D_h7hmw")

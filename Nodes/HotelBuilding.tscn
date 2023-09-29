@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2yhro07qn267"]
+[gd_scene load_steps=12 format=3 uid="uid://b2yhro07qn267"]
 
 [ext_resource type="Script" path="res://Nodes/HotelBuilding.gd" id="1_k5im7"]
 [ext_resource type="PackedScene" uid="uid://0kqkvlj6olim" path="res://Nodes/HotelFloor.tscn" id="2_whu54"]
@@ -14,6 +14,9 @@ size = Vector2(156.5, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dc5wf"]
 size = Vector2(542, 63.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hetek"]
+size = Vector2(31, 120)
 
 [node name="HotelBuilding" type="Node2D"]
 script = ExtResource("1_k5im7")
@@ -103,6 +106,12 @@ kick_direction = 1.0
 shape = SubResource("RectangleShape2D_dc5wf")
 debug_color = Color(0.619608, 0.52549, 0.286275, 0.419608)
 
+[node name="TutorialGuestExit" type="Area2D" parent="Floors/Lobby"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Lobby/TutorialGuestExit"]
+position = Vector2(-495.5, -76)
+shape = SubResource("RectangleShape2D_hetek")
+
 [node name="MinimumPoint" type="Node2D" parent="."]
 
 [node name="MaximumPoint" type="Node2D" parent="."]
@@ -114,6 +123,7 @@ shake_amount = 5.0
 
 [connection signal="body_entered" from="Floors/Lobby/SafeZoneLeft" to="Floors/Lobby/SafeZoneLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="Floors/Lobby/SafeZoneRight" to="Floors/Lobby/SafeZoneRight" method="_on_body_entered"]
+[connection signal="body_entered" from="Floors/Lobby/TutorialGuestExit" to="." method="_on_tutorial_guest_exit_body_entered"]
 
 [editable path="Floors/Lobby"]
 [editable path="Floors/Lobby/DoorMechanism"]

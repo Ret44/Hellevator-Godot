@@ -194,4 +194,8 @@ func process_spawning(delta):
 		pass
 	pass
 	
-	
+
+func _on_tutorial_guest_exit_body_entered(body):
+	if(body.is_in_group("TutorialGuest")):
+		Game.state.perform_tutorial(6)
+	pass # Replace with function body.

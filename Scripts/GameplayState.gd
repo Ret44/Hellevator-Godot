@@ -68,6 +68,12 @@ func start_game():
 	game_scene.hotel.set_lobby_broken(true)
 	game_scene.hotel.is_tilting = true
 	game_scene.hotel.is_spawning = true
+	game_scene.hotel.elevator.allow_doors = true
+	game_scene.hotel.elevator.allow_movement = true
+	game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = false
+	game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = false
+	game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.LEFT).visible = false
+	game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.RIGHT).visible = false
 	if(tutorial_guest != null):
 		tutorial_guest.free()
 	pass
@@ -98,7 +104,7 @@ func progress_gameplay(delta):
 func perform_tutorial(stage):
 	tutorial_stage = stage
 	match stage:
-		1:
+		1: # Step 1: Player moves elevator to upper level
 			UIManager.hide_hud(true)
 			game_scene.hotel.set_lobby_broken(false)
 			game_scene.hotel.is_tilting = false
@@ -106,20 +112,28 @@ func perform_tutorial(stage):
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = true
 			game_scene.hotel.elevator.on_floor_changed.connect(on_tutorial_elevator_arrived)
 			spawn_tutorial_guest()
-		2:
+		2: # Step 2: Player opens door for the guest
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = false
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.RIGHT).visible = true
 			game_scene.hotel.elevator.allow_movement = false
-		3:
+		3: # Step 3: Player waits for the guest to enter the elevator
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.RIGHT).visible = false
 			game_scene.hotel.elevator.allow_doors = false
-			game_scene.hotel.tutorial_guest.move_to_elevator()
-		4:
+			game_scene.hotel.tutorial_guest.start_moving()
+		4: # Step 4: Player moves elevator with the guest to the lobby
 			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = true
 			game_scene.hotel.elevator.allow_doors = true
 			game_scene.hotel.elevator.allow_movement = true
 			Game.state.game_scene.hotel.floors[2].door_mechanism.open_right = false
-		5: 
+		5: # Step 5: Player waits as the guest exit elevator and leaves the hotel
+			game_scene.hotel.elevator.allow_movement = false
+			game_scene.hotel.elevator.allow_doors = false
+			game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = false
+			Game.state.game_scene.hotel.floors[0].door_mechanism.open_left = true
+			Sounds.stop(Sounds.engine) # dirty workaround
+			game_scene.hotel.tutorial_guest.start_moving()
+		6: # Step 6: Tutorial ends, game starts
+			Game.state.game_scene.hotel.floors[0].door_mechanism.open_left = false
 			start_game()
 	pass
 	
@@ -156,6 +170,6 @@ func progress_tutorial(delta):
 			if Input.is_action_just_pressed("elevator_door_right"):
 				Game.state.game_scene.hotel.floors[2].door_mechanism.open_right = true
 				perform_tutorial(3)
-		4:  if game_scene.hotel.elevator.position.y > -1.2 :
+		4:  if game_scene.hotel.elevator.position.y > -5.2 :
 				perform_tutorial(5)
 	pass

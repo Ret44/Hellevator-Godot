@@ -33,7 +33,7 @@ var pressed_up : bool
 var bell_girl_animator : AnimatedSprite2D
 	
 @export var tutorial_buttons = []
-
+@export var tutorial_trigger : NodePath
 var last_axis_value : float
 var previous_floor : int
 
@@ -167,5 +167,6 @@ func process_camera(delta):
 
 func _on_tutorial_guest_hold_body_entered(body):
 	if(body.is_in_group("TutorialGuest")):
-		Game.state.perform_tutorial(4)
+		body.on_move_to_elevator_complete()
+		get_node(tutorial_trigger).queue_free()
 	pass # Replace with function body.

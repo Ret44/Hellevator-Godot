@@ -81,6 +81,7 @@ allow_movement = true
 allow_doors = true
 bell_girl_path = NodePath("BellGirl")
 tutorial_buttons = [NodePath("Tutorial/UpButton"), NodePath("Tutorial/DownButton"), NodePath("Tutorial/LeftButton"), NodePath("Tutorial/RightButton")]
+tutorial_trigger = NodePath("Tutorial/TutorialGuestHold")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = 1
@@ -138,11 +139,9 @@ autoplay = "default"
 [node name="TutorialGuestHold" type="Area2D" parent="Tutorial"]
 z_index = 97
 position = Vector2(2.1684e-19, 0)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial/TutorialGuestHold"]
 position = Vector2(-30, -72)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_o2nec")
 debug_color = Color(0.745098, 0.294118, 0.886275, 0.419608)
 

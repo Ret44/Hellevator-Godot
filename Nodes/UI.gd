@@ -32,7 +32,12 @@ var time_minutes_digit2
 var time_seconds_digit1
 var time_seconds_digit2
 
+@export_node_path var save_the_guests_path : NodePath
+
+var save_the_guests
+
 var ui_tweener
+var stg_tweener
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,6 +52,7 @@ func _ready():
 	time_minutes_digit2 = get_node(time_minutes_digit2_path)
 	time_seconds_digit1 = get_node(time_seconds_digit1_path)
 	time_seconds_digit2 = get_node(time_seconds_digit2_path)
+	save_the_guests = get_node(save_the_guests_path)
 	for i in range(0, 88):
 		var dude = dude_prefab.instantiate()
 		dude_container.add_child(dude)
@@ -104,7 +110,20 @@ func show_hud(instant):
 		tween_hud(Color(1,1,1,0), Color(1,1,1,1), 1)
 		pass
 	pass
-	
+
+func show_save_the_guest():
+	save_the_guests.modulate = Color(1,1,1,0)
+	if(stg_tweener != null):
+		stg_tweener.stop()
+		stg_tweener.free()
+		pass
+	stg_tweener = create_tween()
+	stg_tweener.tween_property(save_the_guests, "modulate", Color(1,1,1,1), 1)
+	stg_tweener.tween_interval(3)
+	stg_tweener.tween_property(save_the_guests, "modulate", Color(1,1,1,0), 1)
+	stg_tweener.play()
+	pass
+
 func hide_hud(instant):
 	stop_tweener()
 	if instant:

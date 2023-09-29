@@ -134,6 +134,7 @@ func perform_tutorial(stage):
 			game_scene.hotel.tutorial_guest.start_moving()
 		6: # Step 6: Tutorial ends, game starts
 			Game.state.game_scene.hotel.floors[0].door_mechanism.open_left = false
+			UIManager.show_save_the_guest()
 			start_game()
 	pass
 	

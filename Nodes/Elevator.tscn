@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cfdwlxy4e0k66"]
+[gd_scene load_steps=20 format=3 uid="uid://cfdwlxy4e0k66"]
 
 [ext_resource type="Script" path="res://Nodes/Elevator.gd" id="1_8hduw"]
 [ext_resource type="Texture2D" uid="uid://blatqmyulia57" path="res://Sprites/Elevator/elevator_inside.png" id="2_bk1l5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://xp3wsp8ht0mi" path="res://Sprites/Tutorial/key_right0001.png" id="7_yi3c1"]
 [ext_resource type="Texture2D" uid="uid://cmo3idojjllcn" path="res://Sprites/Tutorial/key_left0002.png" id="9_ppc72"]
 [ext_resource type="Texture2D" uid="uid://3e08b0nb5oll" path="res://Sprites/Tutorial/key_right0002.png" id="11_w16jp"]
+[ext_resource type="Texture2D" uid="uid://du6xto5wwcc7e" path="res://Sprites/Elevator/chandelier.png" id="12_f1f0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwggk"]
 size = Vector2(117, 10)
@@ -73,6 +74,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2nec"]
 size = Vector2(53, 106)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1gfc"]
+radius = 1.41421
 
 [node name="Elevator" type="Node2D"]
 script = ExtResource("1_8hduw")
@@ -144,6 +148,33 @@ position = Vector2(2.1684e-19, 0)
 position = Vector2(-30, -72)
 shape = SubResource("RectangleShape2D_o2nec")
 debug_color = Color(0.745098, 0.294118, 0.886275, 0.419608)
+
+[node name="ChanderlierConnector" type="StaticBody2D" parent="."]
+position = Vector2(0, -126)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChanderlierConnector"]
+shape = SubResource("CircleShape2D_r1gfc")
+
+[node name="ChandelierJoint" type="PinJoint2D" parent="."]
+position = Vector2(0, -127)
+node_a = NodePath("../ChanderlierConnector")
+node_b = NodePath("../Chandelier")
+bias = 0.9
+disable_collision = false
+
+[node name="Chandelier" type="RigidBody2D" parent="."]
+position = Vector2(0, -126)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Chandelier"]
+polygon = PackedVector2Array(-1, 3, -13, 6, -13, 12, -2, 27, 0, 32, 2, 27, 12, 12, 12, 6, 1, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Chandelier"]
+z_index = 2
+position = Vector2(1, 15)
+scale = Vector2(0.245, 0.245)
+texture = ExtResource("12_f1f0e")
 
 [connection signal="on_floor_changed" from="." to="." method="_on_floor_changed"]
 [connection signal="body_entered" from="Tutorial/TutorialGuestHold" to="." method="_on_tutorial_guest_hold_body_entered"]

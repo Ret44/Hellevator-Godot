@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://i4qe0q3nmyre"]
+[gd_scene load_steps=14 format=3 uid="uid://i4qe0q3nmyre"]
 
 [ext_resource type="Script" path="res://Nodes/UI.gd" id="1_1j8hx"]
 [ext_resource type="Script" path="res://Scripts/DoorTransition.gd" id="2_kay4y"]
 [ext_resource type="Script" path="res://Nodes/FPS.gd" id="2_rllte"]
+[ext_resource type="Script" path="res://Scripts/FadeTransition.gd" id="2_vp1xv"]
 [ext_resource type="Texture2D" uid="uid://baek8j3qyaj6q" path="res://Sprites/UI/ui_background.png" id="4_17ngm"]
 [ext_resource type="Texture2D" uid="uid://ofiua34wrltc" path="res://Sprites/UI/ui_floor.png" id="5_34bxs"]
 [ext_resource type="LabelSettings" uid="uid://3jp8x6edfjuw" path="res://Fonts/ui_timer_settings.tres" id="7_fsd53"]
@@ -33,9 +34,33 @@ time_minutes_digit2_path = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit2")
 time_seconds_digit1_path = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit1")
 time_seconds_digit2_path = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit2")
 save_the_guests_path = NodePath("CanvasLayer/UIRoot/SaveTheGuests!")
-transition_path = NodePath("CanvasLayer/UITransitionRoot")
+door_transition_path = NodePath("CanvasLayer/UITransitionRoot")
+fade_transition_path = NodePath("CanvasLayer/UIFadeRoot")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UIFadeRoot" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_vp1xv")
+duration = 1.0
+color = Color(1, 1, 1, 1)
+fade_path = NodePath("Fade")
+
+[node name="Fade" type="TextureRect" parent="CanvasLayer/UIFadeRoot"]
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jq750")
 
 [node name="UITransitionRoot" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -56,6 +81,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -640.0
+offset_right = -640.0
 grow_vertical = 2
 texture = ExtResource("8_jq750")
 
@@ -67,6 +94,8 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 640.0
+offset_right = 640.0
 pivot_offset = Vector2(715, 1)
 texture = ExtResource("8_jq750")
 

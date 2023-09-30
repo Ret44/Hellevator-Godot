@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://i4qe0q3nmyre"]
+[gd_scene load_steps=13 format=3 uid="uid://i4qe0q3nmyre"]
 
 [ext_resource type="Script" path="res://Nodes/UI.gd" id="1_1j8hx"]
+[ext_resource type="Script" path="res://Scripts/DoorTransition.gd" id="2_kay4y"]
 [ext_resource type="Script" path="res://Nodes/FPS.gd" id="2_rllte"]
 [ext_resource type="Texture2D" uid="uid://baek8j3qyaj6q" path="res://Sprites/UI/ui_background.png" id="4_17ngm"]
 [ext_resource type="Texture2D" uid="uid://ofiua34wrltc" path="res://Sprites/UI/ui_floor.png" id="5_34bxs"]
 [ext_resource type="LabelSettings" uid="uid://3jp8x6edfjuw" path="res://Fonts/ui_timer_settings.tres" id="7_fsd53"]
 [ext_resource type="Texture2D" uid="uid://ch586yayw8yfc" path="res://Sprites/Tutorial/savetheppl.png" id="7_n40sn"]
 [ext_resource type="LabelSettings" uid="uid://xmmqjlhxn2fo" path="res://Fonts/ui_money_settings.tres" id="8_1tlu5"]
+[ext_resource type="Texture2D" uid="uid://bhbj46h6rsjax" path="res://Sprites/pixel.png" id="8_jq750"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epu8y"]
 atlas = ExtResource("5_34bxs")
@@ -31,10 +33,45 @@ time_minutes_digit2_path = NodePath("CanvasLayer/UIRoot/GUI/TimeMinutesDigit2")
 time_seconds_digit1_path = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit1")
 time_seconds_digit2_path = NodePath("CanvasLayer/UIRoot/GUI/TimeSecondsDigit2")
 save_the_guests_path = NodePath("CanvasLayer/UIRoot/SaveTheGuests!")
+transition_path = NodePath("CanvasLayer/UITransitionRoot")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="UITransitionRoot" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_kay4y")
+duration = 0.5
+left_door_path = NodePath("LeftDoor")
+right_door_path = NodePath("RightDoor")
+
+[node name="LeftDoor" type="TextureRect" parent="CanvasLayer/UITransitionRoot"]
+modulate = Color(0, 0, 0, 1)
+z_index = 999
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+texture = ExtResource("8_jq750")
+
+[node name="RightDoor" type="TextureRect" parent="CanvasLayer/UITransitionRoot"]
+modulate = Color(0, 0, 0, 1)
+z_index = 999
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+pivot_offset = Vector2(715, 1)
+texture = ExtResource("8_jq750")
+
 [node name="UIRoot" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

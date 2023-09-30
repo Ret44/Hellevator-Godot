@@ -12,18 +12,32 @@ var state_path : NodePath
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_state(gameplay_state, { Globals.ARGKEY_TUTORIAL : true })
+	set_state(gameplay_state, { Globals.ARGKEY_TUTORIAL : true }, true)
 	pass # Replace with function body.
 
 func set_state(new_state_path, args = {}, with_transition = false):
-	if(state!=null):
-		state.process_state_exit()
-		pass
 	var new_state = get_node(new_state_path)
-	if(new_state!=null):
-		state = new_state
-		state_path = new_state_path
-		state.process_state_enter(args)
+	var func_exit = func (args):
+		if(state!=null):
+			state.process_state_exit()
+			pass
+		pass	
+	var func_enter = func (args):
+		if(new_state!=null):
+			state = new_state
+			state_path = new_state_path
+			state.process_state_enter(args)
+			pass	
+	
+	if !with_transition:
+		func_exit.call(args)
+		func_enter.call(args)
+	else:
+		var lmbd = func (args):
+			func_exit.call(args)
+			func_enter.call(args)
+			UIManager.open_transition(null, null)
+		UIManager.close_transition(lmbd, args)
 		pass
 	pass
 

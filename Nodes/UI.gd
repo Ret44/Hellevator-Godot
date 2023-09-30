@@ -36,6 +36,10 @@ var time_seconds_digit2
 
 var save_the_guests
 
+@export_node_path var transition_path : NodePath
+
+var transition
+
 var ui_tweener
 var stg_tweener
 
@@ -53,6 +57,7 @@ func _ready():
 	time_seconds_digit1 = get_node(time_seconds_digit1_path)
 	time_seconds_digit2 = get_node(time_seconds_digit2_path)
 	save_the_guests = get_node(save_the_guests_path)
+	transition = get_node(transition_path)
 	for i in range(0, 88):
 		var dude = dude_prefab.instantiate()
 		dude_container.add_child(dude)
@@ -60,6 +65,14 @@ func _ready():
 		dude.visible = false
 		pass
 	pass # Replace with function body.
+
+func open_transition(callback, args):
+	get_node(transition_path).open(callback, args)
+	pass
+	
+func close_transition(callback, args):
+	get_node(transition_path).close(callback, args)
+	pass
 
 func set_current_floor(value):
 	var rect = Rect2(((value % 3) * 150), ((value / 3) * 150) + (value * 150) % 3, 150, 150)

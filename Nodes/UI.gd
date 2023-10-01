@@ -69,6 +69,7 @@ func _ready():
 		dude_counter.push_back(dude)
 		dude.visible = false
 		pass
+	hide_hud(true)
 	pass # Replace with function body.
 
 func set_current_floor(value):

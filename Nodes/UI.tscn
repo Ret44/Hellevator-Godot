@@ -38,6 +38,7 @@ door_transition_path = NodePath("CanvasLayer/UITransitionRoot")
 fade_transition_path = NodePath("CanvasLayer/UIFadeRoot")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
 
 [node name="UIFadeRoot" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -100,7 +101,6 @@ pivot_offset = Vector2(715, 1)
 texture = ExtResource("8_jq750")
 
 [node name="UIRoot" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://pnvat0xlxpmq"]
+[gd_scene load_steps=6 format=3 uid="uid://pnvat0xlxpmq"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_qat8o"]
 [ext_resource type="Script" path="res://Scripts/GameState.gd" id="2_g1py5"]
 [ext_resource type="Script" path="res://Scripts/SplashScreenState.gd" id="2_vxlo8"]
+[ext_resource type="Script" path="res://Scripts/TitleScreenState.gd" id="3_bjdq3"]
 [ext_resource type="Script" path="res://Scripts/GameplayState.gd" id="3_ih5lv"]
 
 [node name="Game" type="Node"]
@@ -21,7 +22,8 @@ interval_between_cards = 1.0
 interval_during_tween = 0.5
 
 [node name="TitleScreenState" type="Node" parent="."]
-script = ExtResource("2_g1py5")
+script = ExtResource("3_bjdq3")
+title_scene_prefab = "res://Nodes/TitleScreenScene.tscn"
 
 [node name="TutorialState" type="Node" parent="."]
 script = ExtResource("2_g1py5")

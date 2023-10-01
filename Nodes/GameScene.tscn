@@ -49,7 +49,8 @@ scale = Vector2(2.77667, 2.77667)
 texture = ExtResource("1_3k2ly")
 
 [node name="Ground" type="Sprite2D" parent="."]
-position = Vector2(0, 12)
+position = Vector2(-51, 46)
+scale = Vector2(1.85333, 1.85333)
 texture = ExtResource("2_th81x")
 
 [node name="HotelBuilding" parent="." instance=ExtResource("3_n6138")]

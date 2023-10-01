@@ -1,0 +1,151 @@
+[gd_scene load_steps=23 format=3 uid="uid://b0hcox6s8tlh8"]
+
+[ext_resource type="Texture2D" uid="uid://b1s47nqyuop6l" path="res://Sprites/Outside/00_outside_sky.png" id="1_2to1a"]
+[ext_resource type="Texture2D" uid="uid://giw3xk01uba4" path="res://Sprites/Intro/title animate0023.png" id="1_tjpve"]
+[ext_resource type="Texture2D" uid="uid://b5wkhsta304kv" path="res://Sprites/Intro/title animate0001.png" id="2_rkqa5"]
+[ext_resource type="Texture2D" uid="uid://b5q4x67p408lu" path="res://Sprites/Intro/title animate0003.png" id="3_mcg64"]
+[ext_resource type="Texture2D" uid="uid://ddyxchrgrujuj" path="res://Sprites/Intro/title animate0005.png" id="4_qt2ch"]
+[ext_resource type="Texture2D" uid="uid://lbidtnrl4ywi" path="res://Sprites/Intro/title animate0007.png" id="5_0t3bk"]
+[ext_resource type="Texture2D" uid="uid://0y0b76x1lojm" path="res://Sprites/Intro/title animate0009.png" id="6_k3t53"]
+[ext_resource type="Texture2D" uid="uid://f14dslh00kb3" path="res://Sprites/Intro/title animate0011.png" id="7_p72ep"]
+[ext_resource type="Texture2D" uid="uid://lbgvw47mylpl" path="res://Sprites/Intro/title animate0013.png" id="8_q3xpo"]
+[ext_resource type="Texture2D" uid="uid://dax8yap3j7hkb" path="res://Sprites/Intro/title animate0015.png" id="9_805iq"]
+[ext_resource type="Texture2D" uid="uid://bh4ng1kar8gvi" path="res://Sprites/Intro/title animate0017.png" id="10_n64s7"]
+[ext_resource type="Texture2D" uid="uid://beouou5qesom6" path="res://Sprites/Intro/title animate0019.png" id="11_rj1s8"]
+[ext_resource type="Texture2D" uid="uid://brsuyagnos3kp" path="res://Sprites/Intro/title animate0021.png" id="12_p4qv0"]
+[ext_resource type="Texture2D" uid="uid://cjvdshnqhpadu" path="res://Sprites/Intro/press space.png" id="14_gxwo5"]
+[ext_resource type="Texture2D" uid="uid://c6nq4wubbws8y" path="res://Sprites/Outside/01_outside_cloud.png" id="15_drg6q"]
+[ext_resource type="Texture2D" uid="uid://vo3cwgk78vpq" path="res://Sprites/Outside/03_outside_hotel.png" id="16_4ibyn"]
+[ext_resource type="Texture2D" uid="uid://c4t7q7nr7lk3p" path="res://Sprites/Outside/04_outside_ground.png" id="17_pk4kh"]
+[ext_resource type="Texture2D" uid="uid://nyfllikudr3g" path="res://Sprites/Outside/02_outside_skyline.png" id="18_rcvou"]
+
+[sub_resource type="Animation" id="Animation_qc8fg"]
+resource_name = "title_animation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_rkqa5"), ExtResource("3_mcg64"), ExtResource("4_qt2ch"), ExtResource("5_0t3bk"), ExtResource("6_k3t53"), ExtResource("7_p72ep"), ExtResource("8_q3xpo"), ExtResource("9_805iq"), ExtResource("10_n64s7"), ExtResource("11_rj1s8"), ExtResource("12_p4qv0"), ExtResource("1_tjpve")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8rsh1"]
+_data = {
+"title_animation": SubResource("Animation_qc8fg")
+}
+
+[sub_resource type="Animation" id="Animation_3oa4e"]
+resource_name = "cloud_animation"
+length = 93.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 73, 73.1, 73.2, 73.3, 98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1102, 252), Vector2(-150, 252), Vector2(-150, 1000), Vector2(1407, 1000), Vector2(1407, 252), Vector2(1102, 252)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../01OutsideCloud2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15, 15.1, 15.2, 15.3, 93),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(224, 328), Vector2(-100, 328), Vector2(-100, -1000), Vector2(1400, -1000), Vector2(1400, 328), Vector2(224, 328)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w67qx"]
+_data = {
+"cloud_animation": SubResource("Animation_3oa4e")
+}
+
+[node name="TitleScreenScene" type="Node"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 476)
+scale = Vector2(1.63313, 1.64083)
+texture = ExtResource("1_2to1a")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Logo" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -634.0
+offset_top = -111.0
+offset_right = 166.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.65, 1.65)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_rkqa5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Logo"]
+autoplay = "title_animation"
+libraries = {
+"": SubResource("AnimationLibrary_8rsh1")
+}
+
+[node name="PressStart" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -407.0
+offset_top = 18.0
+offset_right = 42.9999
+offset_bottom = 68.0
+grow_horizontal = 2
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("14_gxwo5")
+
+[node name="01OutsideCloud" type="Sprite2D" parent="."]
+position = Vector2(1102, 252)
+texture = ExtResource("15_drg6q")
+
+[node name="01OutsideCloud2" type="Sprite2D" parent="."]
+position = Vector2(224, 328)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_drg6q")
+
+[node name="CloudAnimator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../01OutsideCloud")
+autoplay = "cloud_animation"
+libraries = {
+"": SubResource("AnimationLibrary_w67qx")
+}
+
+[node name="03OutsideHotel" type="Sprite2D" parent="."]
+position = Vector2(640, 536)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("16_4ibyn")
+
+[node name="02OutsideSkyline" type="Sprite2D" parent="."]
+position = Vector2(612.625, 830.3)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("18_rcvou")
+
+[node name="04OutsideGround" type="Sprite2D" parent="."]
+position = Vector2(610.625, 936.3)
+scale = Vector2(1.73156, 1.73156)
+texture = ExtResource("17_pk4kh")

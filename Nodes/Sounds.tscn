@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://drl1b5fhlyggk"]
+[gd_scene load_steps=17 format=3 uid="uid://drl1b5fhlyggk"]
 
 [ext_resource type="Script" path="res://Nodes/Sounds.gd" id="1_j3iuu"]
 [ext_resource type="PackedScene" uid="uid://y2sw40ryuuq6" path="res://Nodes/AudioSourceBase.tscn" id="2_cfqj2"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://bijpcmlpq8fkb" path="res://Sounds/cash_04.wav" id="11_p7lb8"]
 [ext_resource type="AudioStream" uid="uid://c87aqhrfgrfhg" path="res://Sounds/cash_05.wav" id="12_urfeu"]
 [ext_resource type="AudioStream" uid="uid://bw2p6gddxx154" path="res://Sounds/cash_06.wav" id="13_vy5ua"]
+[ext_resource type="AudioStream" uid="uid://eb06lu7tuicb" path="res://Sounds/city_atmo.wav" id="16_7sai2"]
 
 [node name="Sounds" type="Node"]
 script = ExtResource("1_j3iuu")
@@ -26,6 +27,7 @@ bell = NodePath("Bell")
 panic = NodePath("Panic")
 engine = NodePath("Engine")
 cash = [NodePath("Cash1"), NodePath("Cash2"), NodePath("Cash3"), NodePath("Cash4"), NodePath("Cash5"), NodePath("Cash6")]
+city_atmo = NodePath("CityAtmo")
 
 [node name="DoorOpen" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("3_pfh4l")
@@ -66,6 +68,9 @@ stream = ExtResource("12_urfeu")
 [node name="Cash6" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("13_vy5ua")
 
+[node name="CityAtmo" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("16_7sai2")
+
 [editable path="DoorOpen"]
 [editable path="DoorClose"]
 [editable path="LeverLeft"]
@@ -79,3 +84,4 @@ stream = ExtResource("13_vy5ua")
 [editable path="Cash4"]
 [editable path="Cash5"]
 [editable path="Cash6"]
+[editable path="CityAtmo"]

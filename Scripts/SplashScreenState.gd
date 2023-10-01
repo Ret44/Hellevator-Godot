@@ -31,7 +31,7 @@ func process_state_enter(args):
 
 func on_animation_completed():
 	UIManager.fade_transition.color = Color(0,0,0,1)
-	Game.set_state(Game.gameplay_state, { Globals.ARGKEY_TUTORIAL : true }, UIManager.fade_transition, UIManager.door_transition)
+	Game.set_state(Game.title_state, {}, UIManager.fade_transition, UIManager.door_transition)
 	pass
 
 func process_state_exit():

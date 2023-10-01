@@ -82,7 +82,7 @@ func on_tutorial_elevator_arrived():
 	print("GAMESTATE SIGNAL")
 	pass
 
-func process_input(delta):
+func process_input(_delta):
 	
 	pass
 
@@ -150,7 +150,7 @@ func spawn_tutorial_guest():
 		pass
 	pass
 
-func progress_tutorial(delta):
+func progress_tutorial(_delta):
 	match tutorial_stage:
 		1:  
 			if game_scene.hotel.elevator.position.y > -210:

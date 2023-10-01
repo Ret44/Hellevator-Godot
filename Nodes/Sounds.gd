@@ -13,7 +13,7 @@ extends Node
 func _ready():
 	pass # Replace with function body.
 
-func play(sound_path, pitch = 1):
+func play(sound_path, _pitch = 1):
 	var sound : AudioStreamPlayer2D
 	if(typeof(sound_path) == TYPE_ARRAY):
 		sound = get_node(sound_path[randi() % sound_path.size()])

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://pnvat0xlxpmq"]
+[gd_scene load_steps=7 format=3 uid="uid://pnvat0xlxpmq"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_qat8o"]
 [ext_resource type="Script" path="res://Scripts/GameState.gd" id="2_g1py5"]
 [ext_resource type="Script" path="res://Scripts/SplashScreenState.gd" id="2_vxlo8"]
 [ext_resource type="Script" path="res://Scripts/TitleScreenState.gd" id="3_bjdq3"]
 [ext_resource type="Script" path="res://Scripts/GameplayState.gd" id="3_ih5lv"]
+[ext_resource type="Script" path="res://Scripts/OutroState.gd" id="6_c2qss"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_qat8o")
@@ -36,7 +37,8 @@ money_particle_path = "res://Nodes/MoneyParticles.tscn"
 round_time = 90.0
 
 [node name="OutroState" type="Node" parent="."]
-script = ExtResource("2_g1py5")
+script = ExtResource("6_c2qss")
+outro_scene_prefab = "res://Nodes/OutroScreenScene.tscn"
 
 [node name="GameOverState" type="Node" parent="."]
 script = ExtResource("2_g1py5")

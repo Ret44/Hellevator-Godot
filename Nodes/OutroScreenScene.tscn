@@ -1,0 +1,166 @@
+[gd_scene load_steps=16 format=3 uid="uid://dp63x658ngk0n"]
+
+[ext_resource type="Texture2D" uid="uid://b1s47nqyuop6l" path="res://Sprites/Outside/00_outside_sky.png" id="1_hn07b"]
+[ext_resource type="Script" path="res://Nodes/OutroScreenScene.gd" id="1_j03bs"]
+[ext_resource type="Texture2D" uid="uid://b8rjd85nigql" path="res://Sprites/Outside/05_outside_demolition_0001.png" id="7_3tmu3"]
+[ext_resource type="Texture2D" uid="uid://dicevt3omo484" path="res://Sprites/Outside/05_outside_demolition_0002.png" id="8_omx4e"]
+[ext_resource type="Texture2D" uid="uid://bmodxpqi4nk2y" path="res://Sprites/Outside/05_outside_demolition_0003.png" id="9_giup6"]
+[ext_resource type="Texture2D" uid="uid://bhdsg5hl1n2w" path="res://Sprites/Outside/05_outside_demolition_0004.png" id="10_gd0tx"]
+[ext_resource type="Texture2D" uid="uid://c6nq4wubbws8y" path="res://Sprites/Outside/01_outside_cloud.png" id="15_ha7rd"]
+[ext_resource type="Texture2D" uid="uid://vo3cwgk78vpq" path="res://Sprites/Outside/03_outside_hotel.png" id="16_reg4l"]
+[ext_resource type="Texture2D" uid="uid://nyfllikudr3g" path="res://Sprites/Outside/02_outside_skyline.png" id="17_pjcmw"]
+[ext_resource type="Texture2D" uid="uid://c4t7q7nr7lk3p" path="res://Sprites/Outside/04_outside_ground.png" id="18_rh0ke"]
+
+[sub_resource type="Animation" id="Animation_3oa4e"]
+resource_name = "cloud_animation"
+length = 93.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 73, 73.1, 73.2, 73.3, 98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1102, 252), Vector2(-150, 252), Vector2(-150, 1000), Vector2(1407, 1000), Vector2(1407, 252), Vector2(1102, 252)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../01OutsideCloud2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15, 15.1, 15.2, 15.3, 93),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(224, 328), Vector2(-100, 328), Vector2(-100, -1000), Vector2(1400, -1000), Vector2(1400, 328), Vector2(224, 328)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w67qx"]
+_data = {
+"cloud_animation": SubResource("Animation_3oa4e")
+}
+
+[sub_resource type="Animation" id="Animation_64l0t"]
+resource_name = "collapse"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7, 7.2, 7.4, 7.6, 7.8, 8, 8.2, 8.4, 8.6, 8.8, 9, 9.2, 9.4, 9.6, 9.8, 10, 10.2, 10.4, 10.6, 10.8, 11, 11.2, 11.4, 11.6, 11.8, 12, 12.2, 12.4, 12.6, 12.8, 13, 13.2, 13.4, 13.6, 13.8, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.101532, 0.101532),
+"update": 0,
+"values": [635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0, 645.0, 635.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 6),
+"transitions": PackedFloat32Array(1.8025, 2.92818),
+"update": 0,
+"values": [537.0, 1250.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_animation_trigger"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_36f6h"]
+_data = {
+"collapse": SubResource("Animation_64l0t")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3lf3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3tmu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_omx4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_giup6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gd0tx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="OutroScreenScene" type="Node"]
+script = ExtResource("1_j03bs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 476)
+scale = Vector2(1.63313, 1.64083)
+texture = ExtResource("1_hn07b")
+
+[node name="01OutsideCloud" type="Sprite2D" parent="."]
+position = Vector2(1102, 252)
+texture = ExtResource("15_ha7rd")
+
+[node name="01OutsideCloud2" type="Sprite2D" parent="."]
+position = Vector2(224, 328)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_ha7rd")
+
+[node name="CloudAnimator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../01OutsideCloud")
+autoplay = "cloud_animation"
+libraries = {
+"": SubResource("AnimationLibrary_w67qx")
+}
+
+[node name="03OutsideHotel" type="Sprite2D" parent="."]
+position = Vector2(635, 537)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("16_reg4l")
+
+[node name="02OutsideSkyline" type="Sprite2D" parent="."]
+position = Vector2(612.625, 830.3)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("17_pjcmw")
+
+[node name="04OutsideGround" type="Sprite2D" parent="."]
+position = Vector2(610.625, 936.3)
+scale = Vector2(1.73156, 1.73156)
+texture = ExtResource("18_rh0ke")
+
+[node name="CollapseAnimationShake" type="AnimationPlayer" parent="."]
+root_node = NodePath("../03OutsideHotel")
+autoplay = "collapse"
+libraries = {
+"": SubResource("AnimationLibrary_36f6h")
+}
+
+[node name="CollapseCloud" type="AnimatedSprite2D" parent="."]
+position = Vector2(635, 886)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_3lf3l")
+autoplay = "default"
+frame_progress = 0.42116

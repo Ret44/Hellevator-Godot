@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgyvdo5jtqxta"]
+
+[ext_resource type="Script" path="res://Nodes/SplashScreenScene.gd" id="1_rt342"]
+[ext_resource type="Texture2D" uid="uid://dgf7x3q8qm82h" path="res://Sprites/Title/splash01.png" id="2_8lg1f"]
+[ext_resource type="Texture2D" uid="uid://cg8180nlvulxl" path="res://Sprites/Title/splash02.png" id="3_erif6"]
+[ext_resource type="Texture2D" uid="uid://ci01fqe8p2tbt" path="res://Sprites/Title/splash03.png" id="4_i26bg"]
+[ext_resource type="Texture2D" uid="uid://dvnjusgfvv480" path="res://Sprites/Title/splash04.png" id="5_mul5b"]
+
+[node name="SplashScreenScene" type="Node"]
+script = ExtResource("1_rt342")
+splash_01_path = NodePath("CanvasLayer/SplashScreenRoot/Splash01")
+splash_02_path = NodePath("CanvasLayer/SplashScreenRoot/Splash02")
+splash_03_path = NodePath("CanvasLayer/SplashScreenRoot/Splash03")
+splash_04_path = NodePath("CanvasLayer/SplashScreenRoot/Splash04")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SplashScreenRoot" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Splash01" type="TextureRect" parent="CanvasLayer/SplashScreenRoot"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8lg1f")
+
+[node name="Splash02" type="TextureRect" parent="CanvasLayer/SplashScreenRoot"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_erif6")
+
+[node name="Splash03" type="TextureRect" parent="CanvasLayer/SplashScreenRoot"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_i26bg")
+
+[node name="Splash04" type="TextureRect" parent="CanvasLayer/SplashScreenRoot"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_mul5b")

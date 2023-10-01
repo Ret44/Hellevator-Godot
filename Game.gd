@@ -12,7 +12,7 @@ var state_path : NodePath
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_state(gameplay_state, { Globals.ARGKEY_TUTORIAL : true }, UIManager.fade_transition, UIManager.door_transition)
+	set_state(splash_state)
 	pass # Replace with function body.
 
 func set_state(new_state_path, args = {}, in_transition = null, out_transition = null):

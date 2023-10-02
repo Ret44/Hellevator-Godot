@@ -154,6 +154,6 @@ func tween_hud(from, to, time):
 func stop_tweener():
 	if(ui_tweener != null):
 		ui_tweener.stop()
-		ui_tweener.free()
+		#ui_tweener.free()
 		pass
 	pass

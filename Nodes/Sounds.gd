@@ -9,6 +9,10 @@ extends Node
 @export_node_path var engine : NodePath
 @export var cash = []
 @export_node_path var city_atmo : NodePath
+@export_node_path var shake : NodePath
+@export_node_path var short_shake : NodePath
+
+@export_node_path var music : NodePath
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

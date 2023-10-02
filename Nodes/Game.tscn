@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://pnvat0xlxpmq"]
+[gd_scene load_steps=8 format=3 uid="uid://pnvat0xlxpmq"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_qat8o"]
 [ext_resource type="Script" path="res://Scripts/GameState.gd" id="2_g1py5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/TitleScreenState.gd" id="3_bjdq3"]
 [ext_resource type="Script" path="res://Scripts/GameplayState.gd" id="3_ih5lv"]
 [ext_resource type="Script" path="res://Scripts/OutroState.gd" id="6_c2qss"]
+[ext_resource type="Script" path="res://Scripts/GameOverState.gd" id="7_tdoki"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_qat8o")
@@ -41,4 +42,5 @@ script = ExtResource("6_c2qss")
 outro_scene_prefab = "res://Nodes/OutroScreenScene.tscn"
 
 [node name="GameOverState" type="Node" parent="."]
-script = ExtResource("2_g1py5")
+script = ExtResource("7_tdoki")
+gameover_scene_prefab = "res://Nodes/GameOverScene.tscn"

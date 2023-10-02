@@ -10,6 +10,14 @@ var state_path : NodePath
 @export_node_path var outro_state : NodePath
 @export_node_path var game_over_state : NodePath 
 
+var people_saved :
+	get:
+		return get_node(gameplay_state).people_saved
+		
+var money :
+	get:
+		return get_node(gameplay_state).money
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_state(splash_state)

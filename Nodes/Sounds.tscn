@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://drl1b5fhlyggk"]
+[gd_scene load_steps=20 format=3 uid="uid://drl1b5fhlyggk"]
 
 [ext_resource type="Script" path="res://Nodes/Sounds.gd" id="1_j3iuu"]
 [ext_resource type="PackedScene" uid="uid://y2sw40ryuuq6" path="res://Nodes/AudioSourceBase.tscn" id="2_cfqj2"]
@@ -16,7 +16,9 @@
 [ext_resource type="AudioStream" uid="uid://c87aqhrfgrfhg" path="res://Sounds/cash_05.wav" id="12_urfeu"]
 [ext_resource type="AudioStream" uid="uid://bw2p6gddxx154" path="res://Sounds/cash_06.wav" id="13_vy5ua"]
 [ext_resource type="AudioStream" uid="uid://eb06lu7tuicb" path="res://Sounds/city_atmo.wav" id="16_7sai2"]
+[ext_resource type="AudioStream" uid="uid://bfkbn2i0fk68p" path="res://Sounds/Elevatormusic002.wav" id="17_fi2hl"]
 [ext_resource type="AudioStream" uid="uid://buatwugbsfb6b" path="res://Sounds/shakesound.wav" id="17_p3mtb"]
+[ext_resource type="AudioStream" uid="uid://cct7fb5trfdcw" path="res://Sounds/shake sound_cut.wav" id="19_qi7k8"]
 
 [node name="Sounds" type="Node"]
 script = ExtResource("1_j3iuu")
@@ -30,6 +32,8 @@ engine = NodePath("Engine")
 cash = [NodePath("Cash1"), NodePath("Cash2"), NodePath("Cash3"), NodePath("Cash4"), NodePath("Cash5"), NodePath("Cash6")]
 city_atmo = NodePath("CityAtmo")
 shake = NodePath("Shake")
+short_shake = NodePath("ShortShake")
+music = NodePath("Music")
 
 [node name="DoorOpen" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("3_pfh4l")
@@ -73,8 +77,14 @@ stream = ExtResource("13_vy5ua")
 [node name="CityAtmo" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("16_7sai2")
 
+[node name="Music" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("17_fi2hl")
+
 [node name="Shake" parent="." instance=ExtResource("2_cfqj2")]
 stream = ExtResource("17_p3mtb")
+
+[node name="ShortShake" parent="." instance=ExtResource("2_cfqj2")]
+stream = ExtResource("19_qi7k8")
 
 [editable path="DoorOpen"]
 [editable path="DoorClose"]
@@ -90,4 +100,6 @@ stream = ExtResource("17_p3mtb")
 [editable path="Cash5"]
 [editable path="Cash6"]
 [editable path="CityAtmo"]
+[editable path="Music"]
 [editable path="Shake"]
+[editable path="ShortShake"]

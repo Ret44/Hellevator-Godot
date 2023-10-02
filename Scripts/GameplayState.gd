@@ -96,6 +96,9 @@ func progress_gameplay(delta):
 		timer -= delta
 		if(timer <= 0):
 			timer = 0
+			game_scene.hotel.elevator.allow_doors = false
+			game_scene.hotel.elevator.allow_movement = false
+			Game.set_state(Game.outro_state, {}, UIManager.door_transition, UIManager.door_transition)
 			pass
 		UIManager.set_time(timer)
 		pass

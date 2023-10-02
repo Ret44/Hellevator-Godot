@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://s0khwe31p4kh"]
+
+[ext_resource type="Script" path="res://Nodes/GameOverScene.gd" id="1_41jav"]
+[ext_resource type="Texture2D" uid="uid://nuhwo7whxktc" path="res://Sprites/Outro/outro_00sky.png" id="2_ofw8a"]
+[ext_resource type="Texture2D" uid="uid://b2nnw7fy5qffd" path="res://Sprites/Intro/press space restart.png" id="2_qq8yy"]
+[ext_resource type="Texture2D" uid="uid://b4fd6snd5cuis" path="res://Sprites/Outro/outro_01cloud.png" id="3_bc586"]
+[ext_resource type="Texture2D" uid="uid://dcdkbnreywnw3" path="res://Sprites/Outro/outro_02statue.png" id="4_gj8i4"]
+[ext_resource type="FontFile" uid="uid://b67he4402onco" path="res://Fonts/LeaBlock-Regular.ttf" id="5_41vpk"]
+
+[sub_resource type="Animation" id="Animation_3oa4e"]
+resource_name = "cloud_animation"
+length = 93.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 73, 73.1, 73.2, 73.3, 98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1102, 252), Vector2(-150, 252), Vector2(-150, 1000), Vector2(1407, 1000), Vector2(1407, 252), Vector2(1102, 252)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../01OutsideCloud2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15, 15.1, 15.2, 15.3, 93),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(224, 328), Vector2(-100, 328), Vector2(-100, -1000), Vector2(1400, -1000), Vector2(1400, 328), Vector2(224, 328)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w67qx"]
+_data = {
+"cloud_animation": SubResource("Animation_3oa4e")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_d7pnj"]
+font = ExtResource("5_41vpk")
+font_size = 34
+font_color = Color(0.517647, 0.419608, 0.231373, 1)
+
+[node name="GameOverScene" type="Node"]
+script = ExtResource("1_41jav")
+label_path = NodePath("Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -352.0
+offset_top = 15.0
+offset_right = 97.9999
+offset_bottom = 65.0
+grow_horizontal = 2
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("2_qq8yy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(645.17, 472.516)
+scale = Vector2(1.61458, 1.65828)
+texture = ExtResource("2_ofw8a")
+
+[node name="01OutsideCloud" type="Sprite2D" parent="."]
+position = Vector2(1102, 252)
+texture = ExtResource("3_bc586")
+
+[node name="01OutsideCloud2" type="Sprite2D" parent="."]
+position = Vector2(224, 328)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bc586")
+
+[node name="CloudAnimator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../01OutsideCloud")
+autoplay = "cloud_animation"
+libraries = {
+"": SubResource("AnimationLibrary_w67qx")
+}
+
+[node name="Outro02Statue" type="Sprite2D" parent="."]
+position = Vector2(647, 462)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("4_gj8i4")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = 705.0
+offset_right = -618.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LIFT GIRL
+Savior of 000 people
+Her last tip was 000$"
+label_settings = SubResource("LabelSettings_d7pnj")
+horizontal_alignment = 1

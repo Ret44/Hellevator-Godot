@@ -119,6 +119,16 @@ func process_movement(delta):
 			is_moving = false
 			pass
 	pass
+	
+func update_panic_atmo():
+	var floor = Game.state.game_scene.hotel.floors[current_floor]
+	if(!floor.is_lobby && Game.state.tutorial_stage == -1):
+		if floor.door_mechanism.open_left || floor.door_mechanism.open_right:
+			Sounds.set_panic_volume(0)
+		else:
+			Sounds.set_panic_volume(-80)
+		pass
+	pass
 
 func process_doors(delta):
 	if(Input.is_action_pressed("elevator_door_left")):
@@ -126,6 +136,7 @@ func process_doors(delta):
 		if(!floor.is_lobby):
 			floor.door_mechanism.open_left = true
 			pass
+		update_panic_atmo()
 		pass
 	
 	if(Input.is_action_just_released("elevator_door_left")):
@@ -133,6 +144,7 @@ func process_doors(delta):
 		if(!floor.is_lobby):
 			floor.door_mechanism.open_left = false
 			pass
+		update_panic_atmo()
 		pass
 	
 	if(Input.is_action_pressed("elevator_door_right")):
@@ -140,6 +152,7 @@ func process_doors(delta):
 		if(!floor.is_lobby):
 			floor.door_mechanism.open_right = true
 			pass
+		update_panic_atmo()
 		pass
 		
 	if(Input.is_action_just_released("elevator_door_right")):
@@ -147,6 +160,7 @@ func process_doors(delta):
 		if(!floor.is_lobby):
 			floor.door_mechanism.open_right = false
 			pass
+		update_panic_atmo()
 		pass
 	pass
 

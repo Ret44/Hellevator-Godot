@@ -29,6 +29,7 @@ func process_state_enter(args):
 	game_scene._ready()
 	get_tree().root.get_node("GameRoot").add_child(game_scene)
 	timer = round_time
+	Sounds.play(Sounds.music)
 	if args[Globals.ARGKEY_TUTORIAL]:
 		await get_tree().process_frame
 		perform_tutorial(1)
@@ -58,6 +59,10 @@ func set_dudes(value):
 
 func process_state_exit():
 	super()
+	UIManager.hide_hud(true)
+	Sounds.stop(Sounds.engine)
+	Sounds.stop(Sounds.panic)
+	Sounds.stop(Sounds.music)
 	game_scene.free()
 	pass
 
@@ -65,7 +70,13 @@ func start_game():
 	tutorial_stage = -1
 	game_scene.camera.shake(2.5)
 	UIManager.show_hud(false)
+	Sounds.play(Sounds.short_shake)
+	Sounds.set_panic_volume(-80)
+	Sounds.play(Sounds.panic)
+	set_money(0)
+	set_dudes(0)
 	game_scene.hotel.set_lobby_broken(true)
+	await get_tree().create_timer(2.5).timeout
 	game_scene.hotel.is_tilting = true
 	game_scene.hotel.is_spawning = true
 	game_scene.hotel.elevator.allow_doors = true

@@ -74,7 +74,7 @@ func _process(delta):
 	if(checked_out):
 		checkout_timer -= delta
 		if(checkout_timer <= 0):
-			free()
+			queue_free()
 			pass
 		pass
 	pass

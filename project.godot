@@ -12,7 +12,8 @@ config_version=5
 
 config/name="No One Lift Behind"
 run/main_scene="res://game_root.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.1", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://Sprites/icon.png"
 boot_splash/icon="res://Sprites/Guests/guest011.png"
 

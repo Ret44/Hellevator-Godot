@@ -41,6 +41,7 @@ _data = {
 [node name="GameScene" type="Node"]
 script = ExtResource("1_5plew")
 sky_path = NodePath("Sky")
+ground_path = NodePath("Ground")
 hotel_path = NodePath("HotelBuilding")
 
 [node name="Sky" type="Sprite2D" parent="."]

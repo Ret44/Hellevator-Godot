@@ -10,6 +10,11 @@ var state_path : NodePath
 @export_node_path var outro_state : NodePath
 @export_node_path var game_over_state : NodePath 
 
+@export_node_path var root_viewport_path : NodePath
+var root_viewport :
+	get:
+		return get_node(root_viewport_path)
+
 var people_saved :
 	get:
 		return get_node(gameplay_state).people_saved

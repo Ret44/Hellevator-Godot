@@ -10,7 +10,7 @@ func _ready():
 func process_state_enter(args):
 	super(args)
 	title_scene = load(title_scene_prefab).instantiate()
-	get_tree().root.get_node("GameRoot").add_child(title_scene)
+	Game.root_viewport.add_child(title_scene)
 	Sounds.play(Sounds.city_atmo)
 	pass
 

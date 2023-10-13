@@ -10,7 +10,7 @@ func _ready():
 func process_state_enter(args):
 	super(args)
 	outro_scene = load(outro_scene_prefab).instantiate()
-	get_tree().root.get_node("GameRoot").add_child(outro_scene)
+	Game.root_viewport.add_child(outro_scene)
 	Sounds.play(Sounds.shake)
 	pass
 

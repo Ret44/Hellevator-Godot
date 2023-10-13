@@ -27,7 +27,7 @@ func process_state_enter(args):
 	super(args)
 	game_scene = load(game_scene_path).instantiate()
 	game_scene._ready()
-	get_tree().root.get_node("GameRoot").add_child(game_scene)
+	Game.root_viewport.add_child(game_scene)
 	timer = round_time
 	Sounds.play(Sounds.music)
 	if args[Globals.ARGKEY_TUTORIAL]:
@@ -149,6 +149,7 @@ func perform_tutorial(stage):
 		6: # Step 6: Tutorial ends, game starts
 			Game.state.game_scene.hotel.floors[0].door_mechanism.open_left = false
 			UIManager.show_save_the_guest()
+			Game.state.game_scene.hotel.elevator._on_floor_changed()
 			start_game()
 	pass
 	
@@ -167,11 +168,11 @@ func spawn_tutorial_guest():
 func progress_tutorial(_delta):
 	match tutorial_stage:
 		1:  
-			if game_scene.hotel.elevator.position.y > -210:
+			if game_scene.hotel.elevator.position.y > -260:
 				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = true
 				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = false
 				pass
-			elif game_scene.hotel.elevator.position.y <= -210 && game_scene.hotel.elevator.position.y >= -310:
+			elif game_scene.hotel.elevator.position.y <= -260 && game_scene.hotel.elevator.position.y >= -310:
 				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = false
 				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = false
 				pass
@@ -179,7 +180,7 @@ func progress_tutorial(_delta):
 				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.UP).visible = false
 				game_scene.hotel.elevator.get_tutorial_button(Globals.TUTORIAL_BUTTON.DOWN).visible = true
 				pass
-			if game_scene.hotel.elevator.position.y <= -210 && game_scene.hotel.elevator.position.y >= -310 && !game_scene.hotel.elevator.is_moving:
+			if game_scene.hotel.elevator.position.y <= -260 && game_scene.hotel.elevator.position.y >= -310 && !game_scene.hotel.elevator.is_moving:
 				perform_tutorial(2)
 		2: 
 			if Input.is_action_just_pressed("elevator_door_right"):

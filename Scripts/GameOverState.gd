@@ -10,7 +10,7 @@ func _ready():
 func process_state_enter(args):
 	super(args)
 	gameover_scene = load(gameover_scene_prefab).instantiate()
-	get_tree().root.get_node("GameRoot").add_child(gameover_scene)
+	Game.root_viewport.add_child(gameover_scene)
 	var label_txt : String = "LIFT GIRL\nSavior of "+str(Game.people_saved)+" people\nHer last tip was "+str(Game.money)+"$"
 	gameover_scene.label.set_text(label_txt)
 	pass

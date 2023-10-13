@@ -171,7 +171,9 @@ func spawn_guest(spawner, is_tutorial = false):
 	if !is_tutorial:
 		new_guest.randomize_value(spawner.floorID)
 		new_guest.name = "GuestID" + str(guests.size())
-		new_guest.animator.sprite_frames = load(guests_animations_paths[randi() % guests_animations_paths.size()])
+		var guest_path = guests_animations_paths[randi() % guests_animations_paths.size()]
+		print("[SPAWN] Animation path: "+guest_path)
+		new_guest.animator.sprite_frames = load(guest_path)
 		new_guest.animator.play()
 		guests.push_back(new_guest)
 	else:

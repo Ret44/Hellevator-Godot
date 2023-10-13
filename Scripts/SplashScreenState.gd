@@ -14,7 +14,7 @@ func _ready():
 func process_state_enter(args):
 	super(args)	
 	splash_scene = load(splash_scene_prefab).instantiate()
-	get_tree().root.get_node("GameRoot").add_child(splash_scene)
+	Game.root_viewport.add_child(splash_scene)
 	tweener = create_tween()
 	tweener.tween_interval(interval_between_cards)
 	tweener.chain().tween_property(splash_scene.splash_01, "modulate", Color(1,1,1,1), interval_during_tween)

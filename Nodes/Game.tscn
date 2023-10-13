@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://pnvat0xlxpmq"]
+[gd_scene load_steps=9 format=3 uid="uid://pnvat0xlxpmq"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_qat8o"]
 [ext_resource type="Script" path="res://Scripts/GameState.gd" id="2_g1py5"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Scripts/OutroState.gd" id="6_c2qss"]
 [ext_resource type="Script" path="res://Scripts/GameOverState.gd" id="7_tdoki"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_fgy71"]
+viewport_path = NodePath("RootViewport")
+
 [node name="Game" type="Node"]
 script = ExtResource("1_qat8o")
 splash_state = NodePath("SplashScreenState")
@@ -16,6 +19,7 @@ tutorial_state = NodePath("TutorialState")
 gameplay_state = NodePath("GameplayState")
 outro_state = NodePath("OutroState")
 game_over_state = NodePath("GameOverState")
+root_viewport_path = NodePath("RootViewport")
 
 [node name="SplashScreenState" type="Node" parent="."]
 script = ExtResource("2_vxlo8")
@@ -44,3 +48,17 @@ outro_scene_prefab = "res://Nodes/OutroScreenScene.tscn"
 [node name="GameOverState" type="Node" parent="."]
 script = ExtResource("7_tdoki")
 gameover_scene_prefab = "res://Nodes/GameOverScene.tscn"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_fgy71")
+expand_mode = 2
+
+[node name="RootViewport" type="SubViewport" parent="."]
+size = Vector2i(1280, 960)
